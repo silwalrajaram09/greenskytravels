@@ -41,9 +41,14 @@ const operationsAndLogisticsTeam = [
 ];
 
 export default function TeamTabs() {
-  const [activeTab, setActiveTab] = useState<"marketing" | "operations">("marketing");
-  
-  const currentTeam = activeTab === "marketing" ? productSaleAndMarketingTeam : operationsAndLogisticsTeam;
+  const [activeTab, setActiveTab] = useState<"marketing" | "operations">(
+    "marketing",
+  );
+
+  const currentTeam =
+    activeTab === "marketing"
+      ? productSaleAndMarketingTeam
+      : operationsAndLogisticsTeam;
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-24">
@@ -64,21 +69,31 @@ export default function TeamTabs() {
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
         {currentTeam.map((member, idx) => {
-          const slug = member.name.toLowerCase().replace(/ /g, '-');
+          const slug = member.name.toLowerCase().replace(/ /g, "-");
           return (
-          <Link href={`/our-team/${slug}`} key={idx} className="bg-white rounded-2xl shadow-sm hover:shadow-xl transition-shadow duration-300 overflow-hidden group block">
-            <div className="relative h-96 w-full rounded-xl overflow-hidden bg-gray-100">
-              <img
-                src={`/${member.image}`}
-                alt={member.name}
-                className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
-              />
-            </div>
-            <div className="p-6 text-center">
-              <h3 className="text-xl font-bold text-gray-900 mb-2">{member.name}</h3>
-              <p className="text-primary font-medium text-sm">{member.role}</p>
-            </div>
-          </Link>
+            <Link
+              href={`/our-team/${slug}`}
+              key={idx}
+              className="bg-white rounded-2xl shadow-sm hover:shadow-xl transition-shadow duration-300 overflow-hidden group block"
+            >
+              <div className="relative h-96 w-full rounded-xl overflow-hidden bg-gray-100">
+                <Image
+                  src={`/${member.image}`}
+                  alt={member.name}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                  className="object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                />
+              </div>
+              <div className="p-6 text-center">
+                <h3 className="text-xl font-bold text-gray-900 mb-2">
+                  {member.name}
+                </h3>
+                <p className="text-primary font-medium text-sm">
+                  {member.role}
+                </p>
+              </div>
+            </Link>
           );
         })}
       </div>

@@ -51,11 +51,35 @@
     },
     {
       "day": 2,
-      "title": "Sightseeing of Kathmandu UNESCO World Heritage Sites"
+      "title": "Sightseeing of Kathmandu UNESCO World Heritage Sites",
+      "description": [
+        "After a delightful breakfast at the hotel, embark on a full-day sightseeing tour covering Kathmandu’s most significant cultural and historical landmarks:",
+        "Swayambhunath Stupa (Monkey Temple): An ancient Buddhist stupa offering panoramic views of Kathmandu Valley.",
+
+        "Patan Durbar Square: It is a historical palace square renowned for its exquisite architecture and traditional craftsmanship.",
+
+        "Pashupatinath Temple A sacred Hindu temple dedicated to Lord Shiva, located along the banks of the Bagmati River.",
+
+        "Boudhanath Stupa: One of the largest Buddhist stupas in the world, a major pilgrimage site for Tibetan Buddhists.",
+
+        "After an enriching day of exploration, return to the hotel for an overnight stay in Kathmandu.",
+
+       {
+        "duration":"5-7 hours",
+        "distance":"20-25 km",
+        "transport":"Private Vehicle"
+       }
+        
+      ]
     },
     {
       "day": 3,
-      "title": "Nagarkot Sunrise Trip & Explore Bhaktapur then Departure"
+      "title": "Nagarkot Sunrise Trip & Explore Bhaktapur then Departure",
+      "description": [
+        "Early in the morning, drive to Nagarkot, a scenic hilltop destination known for its breathtaking sunrise views over the Himalayan range. After enjoying the mesmerizing sunrise, proceed to Bhaktapur Durbar Square, an ancient city filled with centuries-old temples, courtyards, and vibrant local culture.",
+
+        "In the afternoon or evening, depending on your flight schedule, we will transfer you to the airport for your departure, marking the end of your incredible Kathmandu journey. Have a wonderful journey ahead. We look forward to welcome you back in near future for next holiday. "
+      ]
     }
   ],
   "included": [

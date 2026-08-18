@@ -6,7 +6,7 @@ export interface PackagePrice {
 export interface ItineraryDay {
   day: number;
   title: string;
-  description: string;
+  description: string | string[];
 }
 
 export interface RouteSegment {
@@ -19,6 +19,15 @@ export interface RouteSegment {
 export interface PackageSection {
   title: string;
   paragraphs: string[];
+  items?: string[];
+}
+
+export interface PackageReview {
+  name: string;
+  date: string;
+  title: string;
+  review: string;
+  rating: number;
 }
 
 export interface TravelPackage {
@@ -28,7 +37,9 @@ export interface TravelPackage {
   duration: string;
   activities: string;
   accommodation: string;
+  maxElevation?: string;
   groupSize: string;
+  vehicle?: string;
   meals: string;
   heroImage: string;
   gallery: string[];
@@ -43,4 +54,5 @@ export interface TravelPackage {
   goodToKnow: string[];
   featured: boolean;
   category: string;
+  reviews?: PackageReview[];
 }

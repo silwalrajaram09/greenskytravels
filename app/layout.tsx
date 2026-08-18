@@ -1,22 +1,20 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
+import "@/styles/globals.css";
+
 import Navbar from "@/components/ui/navbar";
 import Footer from "@/components/ui/footer";
+import { FloatingWhatsApp } from "@/components/layout/FloatingWhatsApp";
+import Breadcrumbs from "@/components/ui/Breadcrumbs";
+import { Geist } from "next/font/google";
+import { cn } from "@/lib/utils";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://greenskytravels.com"),
   title: "Greensky Travels",
-  description: "Your premier travel partner providing unforgettable experiences across the globe.",
+  description:
+    "Your premier travel partner providing unforgettable experiences across the globe.",
 };
 
 export default function RootLayout({
@@ -25,13 +23,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
-    >
-      <body className="min-h-full flex flex-col pt-20">
+    <html lang="en" className={cn("h-full antialiased", "font-sans", geist.variable)}>
+      <body className="min-h-full flex flex-col">
         <Navbar />
+
+        <Breadcrumbs />
+
         <main className="flex-grow">{children}</main>
+
+        <FloatingWhatsApp />
+
         <Footer />
       </body>
     </html>

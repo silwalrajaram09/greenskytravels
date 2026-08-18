@@ -1,54 +1,59 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Search, MapPin, Calendar, Users } from "lucide-react";
 import DestinationCard from "@/components/ui/destination-card";
 import PackageCard from "@/components/ui/package-card";
-
+import { featuredPackages, popularDestinations } from "@/lib/data/packageData";
+import HeroSection from "@/components/ui/herosection";
 export default function Home() {
   return (
     <div className="flex flex-col min-h-screen">
-      
       {/* Hero Section */}
-      <section className="relative h-[90vh] min-h-[600px] flex items-center justify-center">
+      <HeroSection />
+      {/* <section className="relative h-[90vh] min-h-[600px] flex items-center justify-center">
         <div className="absolute inset-0 w-full h-full">
-          <img
+          <Image
             src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?q=80&w=2070&auto=format&fit=crop"
             alt="Beautiful travel destination"
-            className="w-full h-full object-cover"
+            fill
+            priority
+            className="object-cover"
           />
           <div className="absolute inset-0 bg-black/40"></div>
         </div>
-        
+
         <div className="relative z-10 w-full max-w-5xl mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 drop-shadow-lg">
             Discover Your Next <span className="text-primary">Adventure</span>
           </h1>
           <p className="text-lg md:text-xl text-gray-200 mb-10 max-w-2xl mx-auto drop-shadow-md">
-            Explore the world's most breathtaking destinations with Greensky Travels. Unforgettable experiences await you.
+            Explore the world&rsquo;s most breathtaking destinations with
+            Greensky Travels. Unforgettable experiences await you.
           </p>
-          
-          {/* Search/Filter Bar */}
+
+         
           <div className="bg-white p-2 md:p-4 rounded-full shadow-2xl flex flex-col md:flex-row items-center gap-2 md:gap-4 max-w-4xl mx-auto">
             <div className="flex-1 flex items-center gap-3 px-4 py-2 md:border-r border-gray-200 w-full">
               <MapPin className="text-gray-400 w-5 h-5 flex-shrink-0" />
-              <input 
-                type="text" 
-                placeholder="Where do you want to go?" 
+              <input
+                type="text"
+                placeholder="Where do you want to go?"
                 className="w-full outline-none text-gray-700 bg-transparent"
               />
             </div>
             <div className="flex-1 flex items-center gap-3 px-4 py-2 md:border-r border-gray-200 w-full">
               <Calendar className="text-gray-400 w-5 h-5 flex-shrink-0" />
-              <input 
-                type="text" 
-                placeholder="When?" 
+              <input
+                type="text"
+                placeholder="When?"
                 className="w-full outline-none text-gray-700 bg-transparent"
               />
             </div>
             <div className="flex-1 flex items-center gap-3 px-4 py-2 w-full">
               <Users className="text-gray-400 w-5 h-5 flex-shrink-0" />
-              <input 
-                type="text" 
-                placeholder="Guests" 
+              <input
+                type="text"
+                placeholder="Guests"
                 className="w-full outline-none text-gray-700 bg-transparent"
               />
             </div>
@@ -58,39 +63,30 @@ export default function Home() {
             </button>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Featured Destinations */}
       <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Popular Destinations</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              Popular Destinations
+            </h2>
             <p className="text-gray-500 max-w-2xl mx-auto">
-              From the highest peaks of Nepal to the ultra-modern skyline of Dubai, explore our most sought-after locations.
+              From the highest peaks of Nepal to the ultra-modern skyline of
+              Dubai, explore our most sought-after locations.
             </p>
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <DestinationCard 
-              title="Nepal" 
-              image="https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=2074&auto=format&fit=crop" 
-              toursCount={12} 
-            />
-            <DestinationCard 
-              title="Japan" 
-              image="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?q=80&w=2070&auto=format&fit=crop" 
-              toursCount={8} 
-            />
-            <DestinationCard 
-              title="Georgia" 
-              image="https://images.unsplash.com/photo-1565008576549-57569a49371d?q=80&w=1974&auto=format&fit=crop" 
-              toursCount={5} 
-            />
-            <DestinationCard 
-              title="Dubai" 
-              image="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?q=80&w=2070&auto=format&fit=crop" 
-              toursCount={10} 
-            />
+            {popularDestinations.map((dest) => (
+              <DestinationCard
+                key={dest.slug}
+                title={dest.name}
+                image={dest.image}
+                toursCount={dest.toursCount}
+              />
+            ))}
           </div>
         </div>
       </section>
@@ -100,41 +96,38 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-4">
             <div>
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Trending Packages</h2>
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                Trending Packages
+              </h2>
               <p className="text-gray-500 max-w-2xl">
-                Carefully curated travel packages designed to give you the best experience for your time and budget.
+                Carefully curated travel packages designed to give you the best
+                experience for your time and budget.
               </p>
             </div>
-            <Link href="/packages" className="text-primary font-semibold hover:text-green-700 flex items-center gap-1 group">
-              View All Packages <span className="transform transition-transform group-hover:translate-x-1">→</span>
+            <Link
+              href="/packages"
+              className="text-primary font-semibold hover:text-green-700 flex items-center gap-1 group"
+            >
+              View All Packages{" "}
+              <span className="transform transition-transform group-hover:translate-x-1">
+                →
+              </span>
             </Link>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <PackageCard 
-              title="Everest Base Camp Trek"
-              image="https://images.unsplash.com/photo-1522198797945-3a0595306cd1?q=80&w=2070&auto=format&fit=crop"
-              duration="15 Days"
-              groupSize="2-10 People"
-              price="$1,499"
-              rating={4.9}
-            />
-            <PackageCard 
-              title="Dubai Premium Desert Safari & City Tour"
-              image="https://images.unsplash.com/photo-1518684079-3c830dcef090?q=80&w=1974&auto=format&fit=crop"
-              duration="5 Days"
-              groupSize="Flexible"
-              price="$899"
-              rating={4.8}
-            />
-            <PackageCard 
-              title="Short Nepal Heritage Tour"
-              image="https://images.unsplash.com/photo-1588667500585-71cb3cbcc92c?q=80&w=2070&auto=format&fit=crop"
-              duration="3 Days"
-              groupSize="2-15 People"
-              price="$299"
-              rating={4.7}
-            />
+            {featuredPackages.map((pkg) => (
+              <PackageCard
+                key={pkg.slug}
+                title={pkg.title}
+                image={pkg.image}
+                duration={pkg.duration}
+                groupSize="Flexible"
+                price={pkg.price}
+                rating={pkg.rating}
+                href={`/packages/${pkg.slug}`}
+              />
+            ))}
           </div>
         </div>
       </section>
@@ -142,23 +135,29 @@ export default function Home() {
       {/* CTA Section */}
       <section className="py-24 bg-secondary relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
-          <img 
-            src="https://images.unsplash.com/photo-1454391304352-2bf4678b1a7a?q=80&w=2074&auto=format&fit=crop" 
-            alt="Background pattern" 
-            className="w-full h-full object-cover"
+          <Image
+            src="https://images.unsplash.com/photo-1454391304352-2bf4678b1a7a?q=80&w=2074&auto=format&fit=crop"
+            alt="Background pattern"
+            fill
+            className="object-cover"
           />
         </div>
         <div className="max-w-4xl mx-auto px-4 text-center relative z-10">
-          <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">Ready to Start Your Journey?</h2>
+          <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
+            Ready to Start Your Journey?
+          </h2>
           <p className="text-xl text-gray-300 mb-10">
-            Contact our travel experts today and let us customize the perfect itinerary for your next adventure.
+            Contact our travel experts today and let us customize the perfect
+            itinerary for your next adventure.
           </p>
-          <Link href="/contact" className="inline-block bg-primary hover:bg-green-600 text-white font-bold py-4 px-10 rounded-full transition-colors text-lg shadow-lg shadow-green-500/20">
+          <Link
+            href="/contact"
+            className="inline-block bg-primary hover:bg-green-600 text-white font-bold py-4 px-10 rounded-full transition-colors text-lg shadow-lg shadow-green-500/20"
+          >
             Plan Your Trip Now
           </Link>
         </div>
       </section>
-
     </div>
   );
 }

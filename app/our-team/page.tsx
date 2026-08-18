@@ -10,12 +10,19 @@ export const metadata = {
 
 export default function OurTeamPage() {
   return (
-    <div className="bg-gray-50 min-h-screen pb-20 pt-28">
+    <div className="bg-white min-h-screen  ">
       {/* Hero Section */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16 text-justify mt-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16 text-justify ">
         <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
           Meet Our <span className="text-primary">Expert Team</span>
         </h1>
+        <div className="mt-2 flex items-center gap-1">
+            <span className="h-[3px] w-12 bg-[#61a447]" />
+            <span className="h-[3px] w-12 bg-[#61a447]" />
+            <span className="h-[3px] w-12 bg-[#61a447]" />
+
+            <span className="h-[3px] w-4 bg-red-500" />
+          </div>
         <p className="text-lg text-gray-600  leading-relaxed">
           At Green Sky Travels, our team is the heart of what we do. With a shared passion for travel and a commitment to excellence, our professionals work tirelessly to create unforgettable experiences for our clients. From local experts in Dubai and Abu Dhabi to global travel specialists, each member brings their unique expertise to ensure your journey is seamless and memorable.
         </p>
