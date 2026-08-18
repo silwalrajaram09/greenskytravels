@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Clock, Users, Star } from "lucide-react";
 
 interface PackageCardProps {
@@ -8,16 +9,26 @@ interface PackageCardProps {
   groupSize: string;
   price: string;
   rating: number;
+  href: string;
 }
 
-export default function PackageCard({ title, image, duration, groupSize, price, rating }: PackageCardProps) {
+export default function PackageCard({
+  title,
+  image,
+  duration,
+  groupSize,
+  price,
+  rating,
+  href,
+}: PackageCardProps) {
   return (
     <div className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow duration-300 border border-gray-100 group">
       <div className="relative h-64 overflow-hidden">
-        <img
+        <Image
           src={image}
           alt={title}
-          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+          fill
+          className="object-cover transition-transform duration-500 group-hover:scale-110"
         />
         <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-bold text-primary flex items-center gap-1 shadow-sm">
           <Star className="w-4 h-4 fill-primary" /> {rating.toFixed(1)}
@@ -25,10 +36,14 @@ export default function PackageCard({ title, image, duration, groupSize, price, 
       </div>
       <div className="p-6">
         <div className="flex items-center gap-4 text-sm text-gray-500 mb-3">
-          <span className="flex items-center gap-1"><Clock className="w-4 h-4 text-primary" /> {duration}</span>
-          <span className="flex items-center gap-1"><Users className="w-4 h-4 text-primary" /> {groupSize}</span>
+          <span className="flex items-center gap-1">
+            <Clock className="w-4 h-4 text-primary" /> {duration}
+          </span>
+          <span className="flex items-center gap-1">
+            <Users className="w-4 h-4 text-primary" /> {groupSize}
+          </span>
         </div>
-        <Link href={`/packages/${title.toLowerCase().replace(/ /g, "-")}`}>
+        <Link href={href}>
           <h3 className="text-xl font-bold text-gray-900 mb-4 hover:text-primary transition-colors line-clamp-2">
             {title}
           </h3>
@@ -39,7 +54,7 @@ export default function PackageCard({ title, image, duration, groupSize, price, 
             <div className="text-xl font-bold text-primary">{price}</div>
           </div>
           <Link
-            href={`/packages/${title.toLowerCase().replace(/ /g, "-")}`}
+            href={href}
             className="px-5 py-2.5 bg-gray-900 text-white text-sm font-semibold rounded-lg hover:bg-primary transition-colors"
           >
             Explore

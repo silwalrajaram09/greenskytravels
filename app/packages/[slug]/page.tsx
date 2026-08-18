@@ -1,10 +1,43 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import { notFound } from "next/navigation";
-import { fraunces } from "@/app/lib/fonts";
-import { getAllPackageSlugs, getPackageBySlug } from "@/app/lib/packages/get-package";
+import {
+  Star,
+  BadgeCheck,
+  ShieldCheck,
+  CreditCard,
+  Landmark,
+  Wallet,
+  Lock,
+  Clock,
+  Users,
+  Calendar,
+  User,
+  ChevronLeft,
+  ChevronRight,
+  X,
+  MapPin,
+  Mountain,
+  Coffee,
+  Bed,
+  Plane,
+  Eye,
+  Heart,
+} from "lucide-react";
+import { fraunces } from "@/lib/fonts";
+import {
+  getAllPackageSlugs,
+  getPackageBySlug,
+  getAllPackages,
+} from "@/lib/packages/get-package";
 import { ElevationProfile } from "@/components/packages/ElevationProfile";
 import { Itinerary } from "@/components/packages/Itinerary";
+import { BookingWidget } from "@/components/packages/BookingWidget";
+import { ReviewCarousel } from "@/components/packages/ReviewCarousel";
+import { GalleryLightbox } from "@/components/packages/GalleryLightbox";
+import { TabNavigation } from "@/components/packages/TabNavigation";
+import { PackageHeader } from "@/components/packages/PackageHeader";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -15,22 +48,34 @@ export async function generateStaticParams() {
   return slugs.map((slug) => ({ slug }));
 }
 
-export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: PageProps): Promise<Metadata> {
   const { slug } = await params;
   const pkg = await getPackageBySlug(slug);
   if (!pkg) return {};
   return {
     title: `${pkg.title} | Green Sky Travels`,
     description: pkg.overview.slice(0, 155),
+    keywords: [pkg.destination, pkg.category, pkg.title].filter(Boolean),
+    openGraph: {
+      title: `${pkg.title} | Green Sky Travels`,
+      description: pkg.overview.slice(0, 155),
+      images: pkg.heroImage ? [{ url: pkg.heroImage }] : [],
+      type: "website",
+    },
   };
 }
 
-const quickFacts = (pkg: NonNullable<Awaited<ReturnType<typeof getPackageBySlug>>>) => [
-  { label: "Duration", value: pkg.duration },
-  { label: "Destination", value: pkg.destination },
-  { label: "Group Size", value: pkg.groupSize },
-  { label: "Meals", value: pkg.meals },
-  { label: "Accommodation", value: pkg.accommodation },
+const quickFacts = (
+  pkg: NonNullable<Awaited<ReturnType<typeof getPackageBySlug>>>,
+) => [
+  { label: "Destination", value: pkg.destination, icon: MapPin },
+  { label: "Duration", value: pkg.duration, icon: Clock },
+  { label: "Activities", value: pkg.activities, icon: Mountain },
+  { label: "Accommodation", value: pkg.accommodation, icon: Bed },
+  { label: "Group Size", value: pkg.groupSize, icon: Users },
+  { label: "Meals", value: pkg.meals, icon: Coffee },
 ];
 
 export default async function PackagePage({ params }: PageProps) {
@@ -40,267 +85,409 @@ export default async function PackagePage({ params }: PageProps) {
 
   const startingPrice = pkg.prices.reduce(
     (min, p) => (p.price < min ? p.price : min),
-    pkg.prices[0]?.price ?? 0
+    pkg.prices[0]?.price ?? 0,
   );
 
+  const allPackages = await getAllPackages();
+  const related = allPackages
+    .filter((p) => p.slug !== pkg.slug)
+    .filter(
+      (p) => p.destination === pkg.destination || p.category === pkg.category,
+    )
+    .slice(0, 3);
+
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: pkg.title,
+    description: pkg.overview,
+    image: pkg.heroImage,
+    brand: { "@type": "Brand", name: "Green Sky Travels" },
+    offers: {
+      "@type": "Offer",
+      priceCurrency: "USD",
+      price: startingPrice,
+      availability: "https://schema.org/InStock",
+    },
+  };
+
   return (
-    <main className="bg-background text-foreground">
+    <main className="bg-white text-slate-900">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+
       {/* Hero */}
-      <section className="relative h-[62vh] min-h-[420px] w-full overflow-hidden">
-        <Image
-          src={pkg.heroImage}
-          alt={pkg.title}
-          fill
-          priority
-          className="object-cover"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#020617] via-[#020617]/30 to-transparent" />
-        <div className="absolute inset-x-0 bottom-0 px-6 pb-10 md:px-16">
-          <p className="mb-3 font-[family-name:var(--font-geist-mono)] text-xs uppercase tracking-[0.2em] text-emerald-400">
-            {pkg.destination} &middot; {pkg.category}
-          </p>
-          <h1
-            className={`${fraunces.className} max-w-3xl text-4xl font-medium leading-[1.05] text-white md:text-6xl`}
-          >
-            {pkg.title}
-          </h1>
-        </div>
-      </section>
+      
+
+      <PackageHeader pkg={pkg}  />
+     
 
       {/* Quick facts strip */}
       <section className="border-b border-slate-200 bg-white">
-        <div className="mx-auto grid max-w-6xl grid-cols-2 gap-6 px-6 py-6 md:grid-cols-5 md:px-16">
+        {/* <div className="mx-auto max-w-7xl px-4 py-3 sm:px-6 lg:px-8">
+          <h1 className="text-2xl text-justify font-bold text-[#020617]">{pkg.title}</h1>
+        </div> */}
+        <div className="mx-auto grid max-w-7xl grid-cols-2 gap-4 px-4 py-6 md:grid-cols-3 lg:grid-cols-6 lg:px-8">
+           
           {quickFacts(pkg).map((fact) => (
-            <div key={fact.label}>
-              <p className="text-xs uppercase tracking-wide text-slate-400">{fact.label}</p>
-              <p className="mt-1 font-[family-name:var(--font-geist-mono)] text-sm text-[#020617]">
-                {fact.value}
-              </p>
+            
+            <div key={fact.label} className="flex items-center gap-3">
+              <fact.icon className="h-5 w-5 shrink-0 text-emerald-600" />
+              <div>
+                
+                <p className="text-xs uppercase tracking-wide text-slate-400">
+                  {fact.label}
+                </p>
+                <p className="mt-0.5 text-sm font-medium text-[#020617]">
+                  {fact.value}
+                </p>
+              </div>
             </div>
           ))}
         </div>
       </section>
 
-      <div className="mx-auto max-w-6xl px-6 md:px-16">
-        {/* Overview + sticky booking card */}
-        <section className="grid grid-cols-1 gap-12 py-14 md:grid-cols-[1fr_320px]">
-          <div>
-            <h2 className={`${fraunces.className} text-2xl font-medium text-[#020617]`}>
-              Overview
-            </h2>
-            <p className="mt-4 leading-relaxed text-slate-600">{pkg.overview}</p>
+      {/* Tab Navigation */}
+      <TabNavigation pkg={pkg} />
+      
+      {/* Main Content with Sticky Booking */}
+      <div className="mx-auto max-w-7xl px-4 lg:px-8">
+        <div className="grid grid-cols-1 gap-8 py-8 lg:grid-cols-[1fr_380px] lg:items-start">
+          {/* Left Column - Content */}
+          <div className="space-y-12">
+            {/* Overview */}
+            <section id="overview">
+              <h2
+                className={`${fraunces.className} text-2xl font-medium text-[#020617]`}
+              >
+                Trip Overview
+              </h2>
+              <p className="mt-4 leading-relaxed text-slate-600">
+                {pkg.overview}
+              </p>
+            </section>
 
-            <h3 className={`${fraunces.className} mt-10 text-xl font-medium text-[#020617]`}>
-              Why This Trek
-            </h3>
-            <ul className="mt-4 space-y-3">
-              {pkg.highlights.map((item) => (
-                <li key={item} className="flex gap-3 text-sm leading-relaxed text-slate-600">
-                  <svg
-                    className="mt-0.5 h-4 w-4 shrink-0 text-emerald-600"
-                    viewBox="0 0 20 20"
-                    fill="none"
-                    aria-hidden="true"
+            {/* Highlights */}
+            <section id="highlights">
+              <h3
+                className={`${fraunces.className} text-xl font-medium text-[#020617]`}
+              >
+                Trip Highlights
+              </h3>
+              <ul className="mt-4 grid grid-cols-1 gap-3 md:grid-cols-2">
+                {pkg.highlights.map((item) => (
+                  <li
+                    key={item}
+                    className="flex gap-3 text-sm leading-relaxed text-slate-600"
                   >
-                    <path
-                      d="M4 10.5L8 14.5L16 6"
-                      stroke="currentColor"
-                      strokeWidth={1.75}
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </div>
+                    <Star className="mt-0.5 h-4 w-4 shrink-0 fill-emerald-600 text-emerald-600" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </section>
 
-          <aside className="h-fit rounded-2xl border border-slate-200 bg-white p-6 md:sticky md:top-6">
-            <p className="text-xs uppercase tracking-wide text-slate-400">Starting from</p>
-            <p className="mt-1 font-[family-name:var(--font-geist-mono)] text-3xl text-[#020617]">
-              ${startingPrice.toLocaleString()}
-              <span className="text-sm font-normal text-slate-400"> / person</span>
-            </p>
-            <dl className="mt-5 space-y-2 border-t border-slate-100 pt-5 text-sm">
-              <div className="flex justify-between">
-                <dt className="text-slate-500">Duration</dt>
-                <dd className="text-[#020617]">{pkg.duration}</dd>
-              </div>
-              <div className="flex justify-between">
-                <dt className="text-slate-500">Group size</dt>
-                <dd className="text-[#020617]">{pkg.groupSize}</dd>
-              </div>
-            </dl>
-            <button
-              type="button"
-              className="mt-6 w-full rounded-lg bg-emerald-600 py-3 text-sm font-medium text-white transition-colors hover:bg-emerald-700"
-            >
-              Request This Trek
-            </button>
-          </aside>
-        </section>
-
-        {/* Elevation profile — signature element */}
-        <section className="border-t border-slate-200 py-14">
-          <h2 className={`${fraunces.className} text-2xl font-medium text-[#020617]`}>
-            The Route, By Elevation
-          </h2>
-          <p className="mt-2 max-w-2xl text-sm text-slate-500">
-            From Lukla to Everest Base Camp and the Kala Patthar viewpoint — plotted from
-            the actual trail distances and altitudes.
-          </p>
-          <div className="mt-8">
-            <ElevationProfile segments={pkg.distanceAndAltitude} />
-          </div>
-        </section>
-
-        {/* Gallery */}
-        {pkg.gallery?.length > 0 && (
-          <section className="border-t border-slate-200 py-14">
-            <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
-              {pkg.gallery.map((src) => (
-                <div key={src} className="relative aspect-[4/5] overflow-hidden rounded-xl bg-slate-100">
-                  <Image src={src} alt="" fill className="object-cover" />
+            {/* Extra Sections */}
+            {pkg.sections?.map((section) => (
+              <section
+                key={section.title}
+                id={section.title.toLowerCase().replace(/\s+/g, "-")}
+              >
+                <h2
+                  className={`${fraunces.className} text-2xl font-medium text-[#020617]`}
+                >
+                  {section.title}
+                </h2>
+                <div className="mt-4 space-y-4">
+                  {section.paragraphs?.map((p, i) => (
+                    <p key={i} className="leading-relaxed text-slate-600">
+                      {p}
+                    </p>
+                  ))}
                 </div>
+              </section>
+            ))}
+
+            {/* Gallery */}
+            {pkg.gallery?.length > 0 && (
+              <section id="gallery">
+                <h2
+                  className={`${fraunces.className} text-2xl font-medium text-[#020617]`}
+                >
+                  Tour Photos ({pkg.gallery.length})
+                </h2>
+                <GalleryLightbox images={pkg.gallery} />
+              </section>
+            )}
+
+            {/* Distance & Altitude Table */}
+            {pkg.distanceAndAltitude?.length > 0 && (
+              <section id="distance">
+                <h2
+                  className={`${fraunces.className} text-2xl font-medium text-[#020617]`}
+                >
+                  Distance & Altitude Coverage
+                </h2>
+                <div className="mt-6 overflow-x-auto rounded-xl border border-slate-200">
+                  <table className="w-full min-w-[560px] text-left text-sm">
+                    <thead className="bg-slate-50">
+                      <tr className="text-xs uppercase tracking-wide text-slate-500">
+                        <th className="px-4 py-3 font-medium">
+                          Trekking Route
+                        </th>
+                        <th className="px-4 py-3 font-medium">Distance</th>
+                        <th className="px-4 py-3 font-medium">Duration</th>
+                        <th className="px-4 py-3 font-medium">Altitude</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-slate-100">
+                      {pkg.distanceAndAltitude.map((seg) => (
+                        <tr key={seg.route}>
+                          <td className="px-4 py-3 font-medium text-slate-700">
+                            {seg.route}
+                          </td>
+                          <td className="px-4 py-3 text-slate-600">
+                            {seg.distance}
+                          </td>
+                          <td className="px-4 py-3 text-slate-600">
+                            {seg.duration}
+                          </td>
+                          <td className="px-4 py-3 text-slate-600">
+                            {seg.altitude}
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </section>
+            )}
+
+            {/* Itinerary */}
+            {pkg.itinerary?.length > 0 && (
+              <section id="itinerary">
+                <h2
+                  className={`${fraunces.className} text-2xl font-medium text-[#020617]`}
+                >
+                  Trip Itinerary
+                </h2>
+                <div className="mt-6">
+                  <Itinerary days={pkg.itinerary} />
+                </div>
+              </section>
+            )}
+
+            {/* Included / Excluded */}
+            <section
+              id="included"
+              className="grid grid-cols-1 gap-8 md:grid-cols-2"
+            >
+              <div>
+                <h3
+                  className={`${fraunces.className} text-xl font-medium text-[#020617]`}
+                >
+                  Included
+                </h3>
+                <ul className="mt-4 space-y-2">
+                  {pkg.included.map((item) => (
+                    <li
+                      key={item}
+                      className="flex gap-3 text-sm text-slate-600"
+                    >
+                      <span className="mt-1 text-emerald-600">✓</span>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div>
+                <h3
+                  className={`${fraunces.className} text-xl font-medium text-[#020617]`}
+                >
+                  Excluded
+                </h3>
+                <ul className="mt-4 space-y-2">
+                  {pkg.excluded.map((item) => (
+                    <li
+                      key={item}
+                      className="flex gap-3 text-sm text-slate-600"
+                    >
+                      <span className="mt-1 text-red-500">✕</span>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </section>
+
+            {/* Good to Know */}
+            {pkg.goodToKnow?.length > 0 && (
+              <section id="good-to-know">
+                <h2
+                  className={`${fraunces.className} text-2xl font-medium text-[#020617]`}
+                >
+                  Good to Know
+                </h2>
+                <div className="mt-4 grid grid-cols-1 gap-4 md:grid-cols-2">
+                  {pkg.goodToKnow.map((item) => (
+                    <div
+                      key={item}
+                      className="rounded-lg border border-slate-200 p-4"
+                    >
+                      <p className="text-sm leading-relaxed text-slate-600">
+                        {item}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </section>
+            )}
+
+            {/* Reviews */}
+            {pkg.reviews?.length > 0 && (
+              <section id="reviews">
+                <h2
+                  className={`${fraunces.className} text-2xl font-medium text-[#020617]`}
+                >
+                  Traveller Reviews
+                </h2>
+                <div className="mt-6">
+                  <ReviewCarousel reviews={pkg.reviews} />
+                </div>
+              </section>
+            )}
+          </div>
+
+          {/* Right Column - Sticky Booking Widget */}
+          <aside className="relative lg:sticky lg:top-24 h-fit">
+      <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-lg">
+              <div className="flex items-center justify-between">
+                <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-50 px-3 py-1 text-xs font-semibold text-emerald-700">
+                  <Lock className="h-3.5 w-3.5" />
+                  Private Trip
+                </span>
+                <div className="flex items-center gap-1 text-sm">
+                  <span className="flex items-center gap-1 font-bold text-[#020617]">
+                    <Star className="h-4 w-4 fill-amber-400 text-amber-400" />
+                    {pkg.reviews?.length > 0
+                      ? (
+                          pkg.reviews.reduce((acc, r) => acc + r.rating, 0) /
+                          pkg.reviews.length
+                        ).toFixed(1)
+                      : "5.0"}
+                  </span>
+                  <span className="text-xs text-slate-400">
+                    ({pkg.reviews?.length ?? 0} reviews)
+                  </span>
+                </div>
+              </div>
+
+             
+              {/* Interactive Booking Widget */}
+              <BookingWidget
+                packageTitle={pkg.title}
+              />
+
+              {/* Trust Badges */}
+              <div className="mt-5 space-y-2.5 border-t border-slate-100 pt-4">
+                <div className="flex items-center gap-2 text-sm text-slate-600">
+                  <BadgeCheck className="h-4 w-4 shrink-0 text-emerald-600" />
+                  Best Price Guarantee
+                </div>
+                <div className="flex items-center gap-2 text-sm text-slate-600">
+                  <ShieldCheck className="h-4 w-4 shrink-0 text-emerald-600" />
+                  Fully Customizable Trip
+                </div>
+                <div className="flex items-center gap-2 text-sm text-slate-600">
+                  <Clock className="h-4 w-4 shrink-0 text-emerald-600" />
+                  {pkg.duration}
+                </div>
+                <div className="flex items-center gap-2 text-sm text-slate-600">
+                  <Users className="h-4 w-4 shrink-0 text-emerald-600" />
+                  {pkg.groupSize}
+                </div>
+              </div>
+
+              {/* Payment Methods */}
+              <div className="mt-5 border-t border-slate-100 pt-4">
+                <p className="text-xs font-semibold uppercase tracking-wide text-slate-400">
+                  We Accept
+                </p>
+                <div className="mt-3 flex flex-wrap items-center gap-2">
+                  <span className="inline-flex items-center gap-1 rounded-md border border-slate-200 px-3 py-1.5 text-xs font-semibold text-slate-600">
+                    <CreditCard className="h-3.5 w-3.5" /> Visa
+                  </span>
+                  <span className="inline-flex items-center gap-1 rounded-md border border-slate-200 px-3 py-1.5 text-xs font-semibold text-slate-600">
+                    <CreditCard className="h-3.5 w-3.5" /> Mastercard
+                  </span>
+                  <span className="inline-flex items-center gap-1 rounded-md border border-slate-200 px-3 py-1.5 text-xs font-semibold text-slate-600">
+                    <Landmark className="h-3.5 w-3.5" /> Bank Transfer
+                  </span>
+                  <span className="inline-flex items-center gap-1 rounded-md border border-slate-200 px-3 py-1.5 text-xs font-semibold text-slate-600">
+                    <Wallet className="h-3.5 w-3.5" /> PayPal
+                  </span>
+                </div>
+              </div>
+            </div>
+          </aside>
+        </div>
+
+        {/* Related Packages */}
+        {related.length > 0 && (
+          <section className="border-t border-slate-200 py-12">
+            <h2
+              className={`${fraunces.className} text-2xl font-medium text-[#020617]`}
+            >
+              You May Also Like
+            </h2>
+            <div className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-3">
+              {related.map((p) => (
+                <Link
+                  key={p.slug}
+                  href={`/packages/${p.slug}`}
+                  className="group overflow-hidden rounded-2xl border border-slate-200 bg-white transition-all hover:shadow-lg"
+                >
+                  <div className="relative h-48 w-full overflow-hidden bg-slate-100">
+                    <Image
+                      src={p.heroImage}
+                      alt={p.title}
+                      fill
+                      className="object-cover transition-transform duration-500 group-hover:scale-110"
+                    />
+                  </div>
+                  <div className="p-5">
+                    <h3 className="text-base font-bold text-[#020617] group-hover:text-emerald-600">
+                      {p.title}
+                    </h3>
+                    <p className="mt-2 text-sm text-slate-500">
+                      {p.duration} · from US${" "}
+                      {Math.min(...p.prices.map((x) => x.price))}
+                    </p>
+                  </div>
+                </Link>
               ))}
             </div>
           </section>
         )}
 
-        {/* Extra narrative sections from JSON */}
-        {pkg.sections?.map((section) => (
-          <section key={section.title} className="border-t border-slate-200 py-14">
-            <h2 className={`${fraunces.className} text-2xl font-medium text-[#020617]`}>
-              {section.title}
-            </h2>
-            <div className="mt-4 space-y-4">
-              {section.paragraphs.map((p, i) => (
-                <p key={i} className="leading-relaxed text-slate-600">
-                  {p}
-                </p>
-              ))}
-            </div>
-          </section>
-        ))}
-
-        {/* Itinerary */}
-        <section className="border-t border-slate-200 py-14">
-          <h2 className={`${fraunces.className} text-2xl font-medium text-[#020617]`}>
-            Day-by-Day Itinerary
-          </h2>
-          <div className="mt-8">
-            <Itinerary days={pkg.itinerary} />
-          </div>
-        </section>
-
-        {/* Distance & altitude table */}
-        <section className="border-t border-slate-200 py-14">
-          <h2 className={`${fraunces.className} text-2xl font-medium text-[#020617]`}>
-            Distance &amp; Altitude
-          </h2>
-          <div className="mt-6 overflow-x-auto">
-            <table className="w-full min-w-[560px] text-left text-sm">
-              <thead>
-                <tr className="border-b border-slate-200 text-xs uppercase tracking-wide text-slate-400">
-                  <th className="py-3 font-normal">Route</th>
-                  <th className="py-3 font-normal">Distance</th>
-                  <th className="py-3 font-normal">Duration</th>
-                  <th className="py-3 font-normal">Altitude</th>
-                </tr>
-              </thead>
-              <tbody className="font-[family-name:var(--font-geist-mono)]">
-                {pkg.distanceAndAltitude.map((seg) => (
-                  <tr key={seg.route} className="border-b border-slate-100">
-                    <td className="py-3 pr-4 font-[family-name:var(--font-geist-sans)]">
-                      {seg.route}
-                    </td>
-                    <td className="py-3 pr-4 text-slate-600">{seg.distance}</td>
-                    <td className="py-3 pr-4 text-slate-600">{seg.duration}</td>
-                    <td className="py-3 text-slate-600">{seg.altitude}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </section>
-
-        {/* Included / excluded */}
-        <section className="grid grid-cols-1 gap-10 border-t border-slate-200 py-14 md:grid-cols-2">
-          <div>
-            <h3 className={`${fraunces.className} text-xl font-medium text-[#020617]`}>
-              What&rsquo;s Included
-            </h3>
-            <ul className="mt-4 space-y-2">
-              {pkg.included.map((item) => (
-                <li key={item} className="flex gap-3 text-sm text-slate-600">
-                  <span className="mt-1 text-emerald-600">&#10003;</span>
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div>
-            <h3 className={`${fraunces.className} text-xl font-medium text-[#020617]`}>
-              Not Included
-            </h3>
-            <ul className="mt-4 space-y-2">
-              {pkg.excluded.map((item) => (
-                <li key={item} className="flex gap-3 text-sm text-slate-600">
-                  <span className="mt-1 text-red-500">&#10005;</span>
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </div>
-        </section>
-
-        {/* Pricing */}
-        <section className="border-t border-slate-200 py-14">
-          <h2 className={`${fraunces.className} text-2xl font-medium text-[#020617]`}>
-            Group Pricing
-          </h2>
-          <div className="mt-6 grid grid-cols-2 gap-4 md:grid-cols-4">
-            {pkg.prices.map((tier) => (
-              <div key={tier.label} className="rounded-xl border border-slate-200 p-5">
-                <p className="text-xs uppercase tracking-wide text-slate-400">{tier.label}</p>
-                <p className="mt-2 font-[family-name:var(--font-geist-mono)] text-xl text-[#020617]">
-                  ${tier.price.toLocaleString()}
-                </p>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* Good to know */}
-        <section className="border-t border-slate-200 py-14">
-          <h2 className={`${fraunces.className} text-2xl font-medium text-[#020617]`}>
-            Good to Know
-          </h2>
-          <ul className="mt-6 space-y-4">
-            {pkg.goodToKnow.map((item) => (
-              <li key={item} className="flex gap-3 text-sm leading-relaxed text-slate-600">
-                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-emerald-600" />
-                {item}
-              </li>
-            ))}
-          </ul>
-        </section>
-
-        {/* Closing CTA */}
-        <section className="border-t border-slate-200 py-16 text-center">
-          <h2 className={`${fraunces.className} text-3xl font-medium text-[#020617]`}>
+        {/* Final CTA */}
+        <section className="border-t border-slate-200 py-12 text-center">
+          <h2
+            className={`${fraunces.className} text-3xl font-medium text-[#020617]`}
+          >
             Ready for {pkg.title}?
           </h2>
           <p className="mx-auto mt-3 max-w-md text-sm text-slate-500">
-            Our team will help you plan every detail, from permits to porters.
+            Our team will help you plan every detail of your journey.
           </p>
-          <button
-            type="button"
-            className="mt-6 rounded-lg bg-emerald-600 px-8 py-3 text-sm font-medium text-white transition-colors hover:bg-emerald-700"
+          <Link
+            href="/contact"
+            className="mt-6 inline-block rounded-lg bg-emerald-600 px-8 py-3 text-sm font-medium text-white transition-colors hover:bg-emerald-700"
           >
             Contact Green Sky Travels
-          </button>
+          </Link>
         </section>
       </div>
     </main>

@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import type { RouteSegment } from "@/app/lib/packages/types";
-import { parseAltitudeMeters, parseDistanceKm } from "@/app/lib/packages/get-package";
+import type { RouteSegment } from "@/lib/packages/types";
+import { parseAltitudeMeters, parseDistanceKm } from "@/lib/packages/get-package";
 
 interface ElevationProfileProps {
   segments: RouteSegment[];

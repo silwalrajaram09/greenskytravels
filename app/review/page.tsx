@@ -1,131 +1,154 @@
-const reviews = [
+"use client";
+import { div } from "framer-motion/client";
+import Link from "next/link";
+import Script from "next/script";
+import { useState } from "react";
+
+const REVIEWS = [
   {
-    initial: "B",
-    name: "Bishnu Pokhrel",
-    location: "Kathmandu, Nepal",
-    date: "Sep 2024",
-    title: "Reliable and Affordable Travel Services",
-    text: "Booked a trip through Green Sky Travels and the whole experience was great. The team was professional, friendly, and helpful from start to finish, with good package prices and smooth arrangements throughout.",
-    source: "TripAdvisor",
+    initial: "L",
+    name: "Liam Andersen",
+    date: "6th Feb, 2025",
+    title: "Perfect Blend of Luxury and Adventure",
+    slug: "perfect-blend-of-luxury-and-adventure",
+    excerpt:
+      "From the thrilling desert safari to the luxury of Dubai Marina, Green Sky Travels curated an exceptional experience. The guide's storytelling and the driver's impeccable service made every moment unforgettable. A big thank you to the entire team!",
   },
   {
-    initial: "T",
-    name: "Tara R.",
-    location: "Dubai, UAE",
-    date: "Dec 2024",
-    title: "Nice Travel Company in Dubai",
-    text: "The staff were friendly and capable. Sightseeing, a desert safari, and a hike were all arranged well, and the guide was polite and attentive from beginning to end of the trip.",
-    source: "TripAdvisor",
+    initial: "L",
+    name: "Lucas Garcia",
+    date: "4th Feb, 2025",
+    title: "Simply Paradise",
+    slug: "simply-paradise",
+    excerpt:
+      "The Seychelles tour was everything I imagined and more! The crystal-clear waters and stunning beaches were beyond beautiful. Green Sky Travels organized everything perfectly. The whole experience was seamless, and I felt completely taken care of.",
   },
   {
-    initial: "S",
-    name: "Sagar K.",
-    location: "Dubai, UAE",
-    date: "Jan 2025",
-    title: "Highly Experienced Staff",
-    text: "The staff were friendly and knowledgeable. A desert safari, a cruise, and sightseeing all went exactly as expected, and the whole trip is easy to recommend.",
-    source: "TripAdvisor",
+    initial: "O",
+    name: "Oliver Grant",
+    date: "20th Jan, 2025",
+    title: "An Exceptional Luxury Tour!",
+    slug: "an-exceptional-luxury-tour",
+    excerpt:
+      "Green Sky Travels exceeded our expectations! From the Burj Al Arab's grandeur to the smooth desert safari, everything was perfect. Special thanks to our guide, Layla, for her warmth and our driver, Hassan, for his impeccable driving",
+  },
+  {
+    initial: "E",
+    name: "Emma Johnson",
+    date: "15th Jan, 2025",
+    title: "An Unforgettable Experience",
+    slug: "an-unforgettable-experience",
+    excerpt:
+      "What an incredible experience! The Short & Sweet Seychelles Escape exceeded my expectations in every way. The crystal-clear waters, lush greenery, and private tours were the highlights. Green Sky Travels made everything so easy, and I felt well taken care of.",
+  },
+  {
+    initial: "C",
+    name: "Charlotte Walker",
+    date: "6th Jan, 2025",
+    title: "A Truly Mesmerizing Dubai Experience",
+    slug: "a-truly-mesmerizing-dubai-experience",
+    excerpt:
+      "The Highlights of Dubai Tour exceeded all expectations! From the stunning Burj Khalifa views to the magical Dubai Fountain, every stop was perfectly organized. Our guide's in-depth knowledge made the experience rich and engaging, and the driver ensured smooth and timely travel. A wonderful team effort",
+  },
+  {
+    initial: "J",
+    name: "Jack Spencer",
+    date: "5th Jan, 2025",
+    title: "Unparalleled Service!",
+    slug: "unparalleled-service",
+    excerpt:
+      "I couldn't have asked for a better Dubai tour! The team at Green Sky Travels was incredibly organized. Ahmed, our guide, was fantastic, and our driver ensured every trip was relaxing. Highly recommended!",
   },
 ];
 
+const INITIAL_VISIBLE = 6;
+
 export default function ReviewPage() {
+  const [visibleCount, setVisibleCount] = useState(INITIAL_VISIBLE);
+  const hasMore = visibleCount < REVIEWS.length;
+
   return (
-    <div className="min-h-screen bg-white">
-      <section className="pt-20 pb-16">
-        <div className="max-w-5xl px-2 pl-20">
-          <h1 className="text-2xl font-bold mx-auto text-center text-black">
-            Read Reviews
-          </h1>
-          <h2 className="text-black font-bold text-sm">
-            Hear from Our Happy Travelers
-          </h2>
-          <p className="text-black">
+    <div className="w-full border-b border-gray-100 bg-white">
+      <div className="py-1  mx-auto max-w-7xl items-center gap-2 px-4 sm:px-6 lg:px-8">
+        <div className="justify-start">
+          <h1 className="text-2xl font-bold text-[#092f42]">Read Reviews</h1>
+
+          <div className="mt-2 flex items-center gap-1">
+            <span className="h-[3px] w-12 bg-[#61a447]" />
+            <span className="h-[3px] w-12 bg-[#61a447]" />
+            <span className="h-[3px] w-12 bg-[#61a447]" />
+
+            <span className="h-[3px] w-4 bg-red-500" />
+          </div>
+          <p className="py-2 text-[#092f42] text-base">
             At Green Sky Travels, customer satisfaction is our top priority.
-            We&rsquo;re proud to have served travelers from all over the
-            world, creating unforgettable journeys and exceptional
-            experiences. Here&rsquo;s what our clients have to say about
-            their adventures with us.
+            We’re proud to have served travelers from all over the world,
+            creating unforgettable journeys and exceptional experiences. Here’s
+            what our clients have to say about their adventures with us.
           </p>
-          <span className="text-black text-xl font-bold">
-            Why traveller loves us?
+
+          <span className="text-xl font-semibold font-serif">
+            Why Travelers Love Us
           </span>
-          <ul className="list-disc list-inside space-y-2 text-black">
-            <li>
-              <span className="font-bold text-l">Seamless planning: </span>
-              From start to finish, we make travel effortless.
+          <ul className="space-y-4">
+            <li className="flex items-start gap-4">
+              <span className=" h-3 w-3 shrink-0 rounded-full border-[3px] border-[#61a447]" />
+              <p className="text-l  text-[#092f42]">
+                <strong>Seamless Planning:</strong> From start to finish, we
+                make travel effortless.
+              </p>
             </li>
-            <li>
-              <span className="font-bold text-l">Personalized Service: </span>
-              Each trip is tailored to your unique preferences.
+
+            <li className="flex items-start gap-4">
+              <span className=" h-3 w-3 shrink-0 rounded-full border-[3px] border-[#61a447]" />
+              <p className="text-l  text-[#092f42]">
+                <strong>Personalized Service:</strong> Each trip is tailored to
+                your unique preferences.
+              </p>
             </li>
-            <li>
-              <span className="font-bold text-l">Expert Guidance: </span>
-              Our team&rsquo;s local and global expertise ensures
-              unforgettable experiences.
+
+            <li className="flex items-start gap-4">
+              <span className=" h-3 w-3 shrink-0 rounded-full border-[3px] border-[#61a447]" />
+              <p className="text-l  text-[#092f42]">
+                <strong>Expert Guidance:</strong> Our team’s local and global
+                expertise ensures unforgettable experiences.
+              </p>
             </li>
-            <li>
-              <span className="font-bold text-l">
-                Customer-Centric Approach:{" "}
-              </span>
-              Your satisfaction is our priority.
+
+            <li className="flex items-start gap-4">
+              <span className="h-3 w-3 shrink-0 rounded-full border-[3px] border-[#61a447]" />
+              <p className="text-l text-[#092f42]">
+                <strong>Customer-Centric Approach:</strong> Your satisfaction is
+                our priority.
+              </p>
             </li>
           </ul>
-          <span className="text-black text-xl font-bold">
-            Share your experience
-          </span>
-          <p className="text-black">
-            Have you traveled with Green Sky Travels? We would love to hear
-            about your journey! Share your testimonials and inspire others
-            to embark on their next adventure with us.
-          </p>
-          <p className="text-black">
-            Contact Us Today to plan your next trip and become part of the
-            Green Sky Travels family.
-          </p>
         </div>
-      </section>
-
-      <section className="pb-32">
-        <div className="max-w-5xl px-2 pl-20">
-          <div className="flex items-center gap-2 mb-8">
-            <span className="text-black font-bold text-xl">5.0</span>
-            <span className="text-amber-500 text-sm">★★★★★</span>
-            <span className="text-black text-sm">
-              based on {reviews.length} verified reviews on TripAdvisor
-            </span>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {reviews.map((review) => (
-              <div
-                key={review.title}
-                className="border-t border-gray-200 pt-6"
-              >
-                <div className="flex items-center gap-3 mb-3">
-                  <div className="w-9 h-9 rounded-full bg-black text-white flex items-center justify-center font-bold text-sm">
-                    {review.initial}
-                  </div>
-                  <div>
-                    <p className="text-black font-bold text-sm leading-tight">
-                      {review.name}
-                    </p>
-                    <p className="text-gray-500 text-xs">
-                      {review.location} &middot; {review.date}
-                    </p>
-                  </div>
-                </div>
-                <h3 className="text-black font-bold text-lg mb-2">
-                  {review.title}
-                </h3>
-                <p className="text-black text-sm mb-2">{review.text}</p>
-                <p className="text-gray-400 text-xs">
-                  Sourced from {review.source}
-                </p>
+        <div className="space-y-6">
+          {REVIEWS.slice(0, visibleCount).map((review) => (
+            <div
+              key={review.slug}
+              className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6"
+            >
+              <div className="col-span-1">
+                <h2 className="text-2xl font-bold">{review.name}</h2>
+                <p className="text-sm text-muted">{review.date}</p>
               </div>
-            ))}
-          </div>
+              <div className="col-span-2">
+                <p className="text-base text-muted">{review.excerpt}</p>
+              </div>
+            </div>
+          ))}
+          {hasMore && (
+            <button
+              onClick={() => setVisibleCount((prev) => prev + 4)}
+              className="px-6 py-2.5 rounded-full bg-gradient-to-r from-[#3b82f6] to-[#8b5cf6] text-white hover:opacity-90 transition-all duration-300 text-sm font-medium shadow-lg"
+            >
+              Read More
+            </button>
+          )}
         </div>
-      </section>
+      </div>
     </div>
   );
 }
