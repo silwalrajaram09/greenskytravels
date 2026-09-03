@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Calendar } from "lucide-react";
+import { getWhatsAppUrl } from "@/lib/config/site";
 
 interface BookingWidgetProps {
   packageTitle: string;
@@ -13,12 +14,12 @@ export function BookingWidget({ packageTitle }: BookingWidgetProps) {
 
   const minDate = new Date().toISOString().split("T")[0];
 
-  const whatsappMessage = encodeURIComponent(
+  const whatsappUrl = getWhatsAppUrl(
     `Hello! I am interested in booking the "${packageTitle}" package.\n\n` +
       `Booking Details:\n` +
       `- Date: ${selectedDate || "Not selected yet"}\n` +
       `- Travelers: ${pax}\n\n` +
-      `Could you please provide the available options and pricing?`
+      `Could you please provide the available options and pricing?`,
   );
 
   return (
@@ -77,7 +78,7 @@ export function BookingWidget({ packageTitle }: BookingWidgetProps) {
 
       {/* Book Button */}
       <a
-        href={`https://wa.me/971502142541?text=${whatsappMessage}`}
+        href={whatsappUrl}
         target="_blank"
         rel="noopener noreferrer"
         className="block w-full rounded-lg bg-emerald-600 py-3 text-center text-sm font-semibold text-white transition-colors hover:bg-emerald-700"

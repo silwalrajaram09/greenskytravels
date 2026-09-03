@@ -41,42 +41,67 @@ import ultimateDubaiLuxuryExperience8Days from "@/lib/data/packages/ultimate-dub
 // Central registry of all package JSON files.
 const packageRegistry: Record<string, TravelPackage> = {
   "everest-base-camp-trek": everestBaseCampTrek as TravelPackage,
-  "highlights-of-dubai-tour-5-days": highlightsOfDubaiTour5Days as TravelPackage,
+  "highlights-of-dubai-tour-5-days":
+    highlightsOfDubaiTour5Days as TravelPackage,
   "short-nepal-tour-package": shortNepalTourPackage as TravelPackage,
-  "short-and-sweet-japan-tour-5-days": shortAndSweetJapanTour5Days as TravelPackage,
+  "short-and-sweet-japan-tour-5-days":
+    shortAndSweetJapanTour5Days as TravelPackage,
   "glimpse-of-japan-tour-7-days": glimpseOfJapanTour7Days as TravelPackage,
-  "short-and-sweet-tour-of-georgia-4-days": shortAndSweetTourOfGeorgia4Days as TravelPackage,
+  "short-and-sweet-tour-of-georgia-4-days":
+    shortAndSweetTourOfGeorgia4Days as TravelPackage,
   "best-georgia-holidays-7-days": bestGeorgiaHolidays7Days as TravelPackage,
-  "baku-tbilisi-yerevan-tour-9-days": bakuTbilisiYerevanTour9Days as TravelPackage,
+  "baku-tbilisi-yerevan-tour-9-days":
+    bakuTbilisiYerevanTour9Days as TravelPackage,
   "short-oman-tour-4-days": shortOmanTour4Days as TravelPackage,
-  "salalah-tour-package-from-dubai-4-days": salalahTourPackageFromDubai4Days as TravelPackage,
-  "glimpse-of-tanzania-tour-6-days": glimpseOfTanzaniaTour6Days as TravelPackage,
+  "salalah-tour-package-from-dubai-4-days":
+    salalahTourPackageFromDubai4Days as TravelPackage,
+  "glimpse-of-tanzania-tour-6-days":
+    glimpseOfTanzaniaTour6Days as TravelPackage,
   "short-tanzania-safari-5-days": shortTanzaniaSafari5Days as TravelPackage,
-  "best-tanzania-and-zanzibar-tour-10-days": bestTanzaniaAndZanzibarTour10Days as TravelPackage,
+  "best-tanzania-and-zanzibar-tour-10-days":
+    bestTanzaniaAndZanzibarTour10Days as TravelPackage,
   "jordan-tour-package-4-days": jordanTourPackage4Days as TravelPackage,
-  "dubai-abu-dhabi-east-coast-tour-10-days": dubaiAbuDhabiEastCoastTour10Days as TravelPackage,
-  "dubai-tour-with-extra-activities-8-days": dubaiTourWithExtraActivities8Days as TravelPackage,
-  "dubai-abu-dhabi-sharjah-tour-6-days": dubaiAbuDhabiSharjahTour6Days as TravelPackage,
+  "dubai-abu-dhabi-east-coast-tour-10-days":
+    dubaiAbuDhabiEastCoastTour10Days as TravelPackage,
+  "dubai-tour-with-extra-activities-8-days":
+    dubaiTourWithExtraActivities8Days as TravelPackage,
+  "dubai-abu-dhabi-sharjah-tour-6-days":
+    dubaiAbuDhabiSharjahTour6Days as TravelPackage,
   "dubai-and-abu-dhabi-tour-6-days": dubaiAndAbuDhabiTour6Days as TravelPackage,
-  "short-thrill-dubai-adventure-tour-6-days": shortThrillDubaiAdventureTour6Days as TravelPackage,
-  "epic-dubai-adventure-tour-6-days": epicDubaiAdventureTour6Days as TravelPackage,
+  "short-thrill-dubai-adventure-tour-6-days":
+    shortThrillDubaiAdventureTour6Days as TravelPackage,
+  "epic-dubai-adventure-tour-6-days":
+    epicDubaiAdventureTour6Days as TravelPackage,
   "dubai-adventure-tour-5-days": dubaiAdventureTour5Days as TravelPackage,
-  "the-grand-dubai-adventure-tour-8-days": theGrandDubaiAdventureTour8Days as TravelPackage,
-  "dubai-and-abu-dhabi-adventure-tour-9-days": dubaiAndAbuDhabiAdventureTour9Days as TravelPackage,
-  "ultimate-dubai-adventure-escape-10-days": ultimateDubaiAdventureEscape10Days as TravelPackage,
-  "epic-dubai-adventure-escape-10-days": epicDubaiAdventureEscape10Days as TravelPackage,
+  "the-grand-dubai-adventure-tour-8-days":
+    theGrandDubaiAdventureTour8Days as TravelPackage,
+  "dubai-and-abu-dhabi-adventure-tour-9-days":
+    dubaiAndAbuDhabiAdventureTour9Days as TravelPackage,
+  "ultimate-dubai-adventure-escape-10-days":
+    ultimateDubaiAdventureEscape10Days as TravelPackage,
+  "epic-dubai-adventure-escape-10-days":
+    epicDubaiAdventureEscape10Days as TravelPackage,
   "premium-dubai-escape-4-days": premiumDubaiEscape4Days as TravelPackage,
-  "dubai-abu-dhabi-premium-tour-5-days": dubaiAbuDhabiPremiumTour5Days as TravelPackage,
-  "dubai-abu-dhabi-deluxe-escape-6-days": dubaiAbuDhabiDeluxeEscape6Days as TravelPackage,
+  "dubai-abu-dhabi-premium-tour-5-days":
+    dubaiAbuDhabiPremiumTour5Days as TravelPackage,
+  "dubai-abu-dhabi-deluxe-escape-6-days":
+    dubaiAbuDhabiDeluxeEscape6Days as TravelPackage,
   "premium-uae-escape-7-days": premiumUaeEscape7Days as TravelPackage,
-  "dubai-premium-experience-tour-8-days": dubaiPremiumExperienceTour8Days as TravelPackage,
-  "premium-dubai-grand-experience-9-days": premiumDubaiGrandExperience9Days as TravelPackage,
-  "ultimate-dubai-premium-tour-10-days": ultimateDubaiPremiumTour10Days as TravelPackage,
+  "dubai-premium-experience-tour-8-days":
+    dubaiPremiumExperienceTour8Days as TravelPackage,
+  "premium-dubai-grand-experience-9-days":
+    premiumDubaiGrandExperience9Days as TravelPackage,
+  "ultimate-dubai-premium-tour-10-days":
+    ultimateDubaiPremiumTour10Days as TravelPackage,
   "short-dubai-luxury-tour-4-days": shortDubaiLuxuryTour4Days as TravelPackage,
-  "dubai-abu-dhabi-luxury-tour-5-days": dubaiAbuDhabiLuxuryTour5Days as TravelPackage,
-  "dubai-abu-dhabi-luxury-escape-tour-6-days": dubaiAbuDhabiLuxuryEscapeTour6Days as TravelPackage,
-  "elite-dubai-luxury-escape-7-days": eliteDubaiLuxuryEscape7Days as TravelPackage,
-  "ultimate-dubai-luxury-experience-8-days": ultimateDubaiLuxuryExperience8Days as TravelPackage,
+  "dubai-abu-dhabi-luxury-tour-5-days":
+    dubaiAbuDhabiLuxuryTour5Days as TravelPackage,
+  "dubai-abu-dhabi-luxury-escape-tour-6-days":
+    dubaiAbuDhabiLuxuryEscapeTour6Days as TravelPackage,
+  "elite-dubai-luxury-escape-7-days":
+    eliteDubaiLuxuryEscape7Days as TravelPackage,
+  "ultimate-dubai-luxury-experience-8-days":
+    ultimateDubaiLuxuryExperience8Days as TravelPackage,
 };
 
 // Alias map: some links use suffixed slugs (e.g. "-15-days") while the JSON
@@ -91,7 +116,9 @@ export async function getAllPackages(): Promise<TravelPackage[]> {
   return Object.values(packageRegistry);
 }
 
-export async function getPackageBySlug(slug: string): Promise<TravelPackage | null> {
+export async function getPackageBySlug(
+  slug: string,
+): Promise<TravelPackage | null> {
   const canonical = SLUG_ALIASES[slug] ?? slug;
   return packageRegistry[canonical] ?? null;
 }

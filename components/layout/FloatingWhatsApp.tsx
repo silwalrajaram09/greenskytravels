@@ -1,6 +1,7 @@
 "use client";
 
-import Image from "next/image";
+import { getWhatsAppUrl } from "@/lib/config/site";
+
 
 export function FloatingWhatsApp() {
   return (
@@ -31,7 +32,7 @@ export function FloatingWhatsApp() {
 
       {/* WhatsApp Floating Button */}
       <a
-        href="https://wa.me/971502142541?text=Hello!%20I%20would%20like%20more%20information%20about%20your%20tours."
+        href={getWhatsAppUrl("Hello! I would like more information about your tours.")}
         target="_blank"
         rel="noopener noreferrer"
         className="flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-lg transition-transform hover:scale-110 hover:shadow-xl"

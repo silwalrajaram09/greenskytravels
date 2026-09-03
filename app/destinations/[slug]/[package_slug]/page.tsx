@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { destinationSlug } from "@/lib/data/packageData";
 import {
   Star,
   BadgeCheck,
@@ -40,19 +41,22 @@ import { TabNavigation } from "@/components/packages/TabNavigation";
 import { PackageHeader } from "@/components/packages/PackageHeader";
 
 interface PageProps {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ slug: string; package_slug: string }>;
 }
 
 export async function generateStaticParams() {
-  const slugs = await getAllPackageSlugs();
-  return slugs.map((slug) => ({ slug }));
+  const packages = await getAllPackages();
+  return packages.map((pkg) => ({
+    slug: destinationSlug(pkg.destination),
+    package_slug: pkg.slug,
+  }));
 }
 
 export async function generateMetadata({
   params,
 }: PageProps): Promise<Metadata> {
-  const { slug } = await params;
-  const pkg = await getPackageBySlug(slug);
+  const { package_slug } = await params;
+  const pkg = await getPackageBySlug(package_slug);
   if (!pkg) return {};
   return {
     title: `${pkg.title} | Green Sky Travels`,
@@ -79,14 +83,16 @@ const quickFacts = (
 ];
 
 export default async function PackagePage({ params }: PageProps) {
-  const { slug } = await params;
-  const pkg = await getPackageBySlug(slug);
+  const { package_slug } = await params;
+  const pkg = await getPackageBySlug(package_slug);
   if (!pkg) notFound();
 
   const startingPrice = pkg.prices.reduce(
     (min, p) => (p.price < min ? p.price : min),
     pkg.prices[0]?.price ?? 0,
   );
+
+  const reviews = pkg.reviews ?? [];
 
   const allPackages = await getAllPackages();
   const related = allPackages
@@ -346,7 +352,7 @@ export default async function PackagePage({ params }: PageProps) {
             )}
 
             {/* Reviews */}
-            {pkg.reviews?.length > 0 && (
+            {reviews.length > 0 && (
               <section id="reviews">
                 <h2
                   className={`${fraunces.className} text-2xl font-medium text-[#020617]`}
@@ -354,7 +360,7 @@ export default async function PackagePage({ params }: PageProps) {
                   Traveller Reviews
                 </h2>
                 <div className="mt-6">
-                  <ReviewCarousel reviews={pkg.reviews} />
+                  <ReviewCarousel reviews={reviews} />
                 </div>
               </section>
             )}
@@ -371,15 +377,15 @@ export default async function PackagePage({ params }: PageProps) {
                 <div className="flex items-center gap-1 text-sm">
                   <span className="flex items-center gap-1 font-bold text-[#020617]">
                     <Star className="h-4 w-4 fill-amber-400 text-amber-400" />
-                    {pkg.reviews?.length > 0
+                    {reviews.length > 0
                       ? (
-                          pkg.reviews.reduce((acc, r) => acc + r.rating, 0) /
-                          pkg.reviews.length
+                          reviews.reduce((acc, r) => acc + r.rating, 0) /
+                          reviews.length
                         ).toFixed(1)
                       : "5.0"}
                   </span>
                   <span className="text-xs text-slate-400">
-                    ({pkg.reviews?.length ?? 0} reviews)
+                    ({reviews.length} reviews)
                   </span>
                 </div>
               </div>
@@ -446,7 +452,7 @@ export default async function PackagePage({ params }: PageProps) {
               {related.map((p) => (
                 <Link
                   key={p.slug}
-                  href={`/packages/${p.slug}`}
+                  href={`/destinations/${destinationSlug(p.destination)}/${p.slug}`}
                   className="group overflow-hidden rounded-2xl border border-slate-200 bg-white transition-all hover:shadow-lg"
                 >
                   <div className="relative h-48 w-full overflow-hidden bg-slate-100">

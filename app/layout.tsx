@@ -27,7 +27,7 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col">
         <Navbar />
 
-        <Breadcrumbs />
+        {/* <Breadcrumbs /> */}
 
         <main className="flex-grow">{children}</main>
 

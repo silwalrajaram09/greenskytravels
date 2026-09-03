@@ -110,7 +110,7 @@ export default function Footer() {
             <ul className="space-y-3">
               <li>
                 <Link
-                  href="/packages/everest-base-camp-trek"
+                  href="/destinations/nepal-tour-packages/everest-base-camp-trek"
                   className="text-gray-400 hover:text-primary transition-colors"
                 >
                   Everest Base Camp Trek
@@ -118,7 +118,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="/destinations/japan"
+                  href="/destinations/japan-tour-packages"
                   className="text-gray-400 hover:text-primary transition-colors"
                 >
                   Japan Highlights
@@ -126,7 +126,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="/packages/highlights-of-dubai-tour-5-days"
+                  href="/destinations/dubai-tour-packages/highlights-of-dubai-tour-5-days"
                   className="text-gray-400 hover:text-primary transition-colors"
                 >
                   Dubai Highlights Tour
@@ -134,7 +134,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="/destinations/georgia"
+                  href="/destinations/georgia-tour-packages"
                   className="text-gray-400 hover:text-primary transition-colors"
                 >
                   Georgia Adventure
@@ -142,7 +142,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="/packages/short-nepal-tour-package"
+                  href="/destinations/nepal-tour-packages/short-nepal-tour-package"
                   className="text-gray-400 hover:text-primary transition-colors"
                 >
                   Short Nepal Tour

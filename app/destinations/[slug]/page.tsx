@@ -15,10 +15,11 @@ interface PageProps {
 export async function generateMetadata({ params }: PageProps) {
   const { slug } = await params;
   const title = slug
+    .replace(/-tour-packages$/, "")
     .replace(/-/g, " ")
     .replace(/\b\w/g, (l) => l.toUpperCase());
   return {
-    title: `${title} Tours | Green Sky Travels`,
+    title: `${title} Tour Packages | Green Sky Travels`,
     description: `Explore ${title} tour packages with Green Sky Travels.`,
   };
 }
@@ -35,7 +36,10 @@ function getDestinationPackages(slug: string) {
     })),
   ];
 
-  const found = groups.find((g) => g.country.toLowerCase() === normalized);
+  const found = groups.find((g) => {
+    const groupSlug = g.link.split("/").pop()?.toLowerCase();
+    return groupSlug === normalized || g.country.toLowerCase() === normalized;
+  });
   if (found) {
     return {
       name: found.country,
@@ -49,6 +53,7 @@ function getDestinationPackages(slug: string) {
 export default async function DestinationPage({ params }: PageProps) {
   const { slug } = await params;
   const title = slug
+    .replace(/-tour-packages$/, "")
     .replace(/-/g, " ")
     .replace(/\b\w/g, (l) => l.toUpperCase());
   const destination = getDestinationPackages(slug);

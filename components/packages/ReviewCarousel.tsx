@@ -8,7 +8,8 @@ interface Review {
   date: string;
   rating: number;
   title: string;
-  content: string;
+  review?: string;
+  content?: string;
   platform?: "Tripadvisor" | "Google";
 }
 
@@ -91,7 +92,10 @@ export function ReviewCarousel({ reviews }: ReviewCarouselProps) {
           className="flex transition-transform duration-300 ease-in-out"
           style={{ transform: `translateX(-${currentIndex * 100}%)` }}
         >
-          {reviews.map((review, index) => (
+          {reviews.map((review, index) => {
+            const reviewContent = review.content ?? review.review ?? "";
+
+            return (
             <div key={index} className="w-full flex-shrink-0 p-6">
               <div className="flex items-start justify-between">
                 <div>
@@ -125,9 +129,9 @@ export function ReviewCarousel({ reviews }: ReviewCarouselProps) {
 
               <h5 className="mt-4 font-semibold text-[#020617]">{review.title}</h5>
               <p className="mt-2 text-sm leading-relaxed text-slate-600">
-                {expandedIndex === index 
-                  ? review.content 
-                  : `${review.content.slice(0, 120)}...`}
+                {expandedIndex === index
+                  ? reviewContent
+                  : `${reviewContent.slice(0, 120)}...`}
               </p>
               <button
                 onClick={() => toggleExpand(index)}
@@ -136,7 +140,8 @@ export function ReviewCarousel({ reviews }: ReviewCarouselProps) {
                 {expandedIndex === index ? "Read less -" : "Read more +"}
               </button>
             </div>
-          ))}
+            );
+          })}
         </div>
 
         {/* Navigation Buttons */}

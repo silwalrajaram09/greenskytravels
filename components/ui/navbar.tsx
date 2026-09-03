@@ -19,8 +19,7 @@ export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [hoveredCountry, setHoveredCountry] = useState<string>("Nepal");
   const [hoveredDubaiCategory, setHoveredDubaiCategory] = useState<string>(
-    "Dubai Classic Tours",
-  );
+    "Dubai Budget Friendly tour ",);
 
   return (
     <nav className="relative border-b border-gray-200 shadow-md top-0 left-0 right-0 z-50 bg-white backdrop-blur-md">
@@ -114,10 +113,13 @@ export default function Navbar() {
 
             {/* Dubai Tour Packages Dropdown */}
             <div className="relative group">
-              <button className="flex items-center gap-1 px-3 py-2 text-sm font-bold text-gray-900 hover:text-primary transition-colors">
+              <Link
+                href="/dubai-tour-packages"
+                className="flex items-center gap-1 px-3 py-2 text-sm font-bold text-gray-900 hover:text-primary transition-colors"
+              >
                 Dubai Tour Packages{" "}
                 <ChevronDown className="h-4 w-4 text-red-600 stroke-[3] transition-transform duration-200 group-hover:rotate-180" />
-              </button>
+              </Link>
 
               {/* Dubai Mega Menu Dropdown */}
               <div className="absolute left-0 mt-2 w-[600px] bg-white border border-gray-100 rounded-xl shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform origin-top-left flex overflow-hidden z-50">
@@ -209,12 +211,12 @@ export default function Navbar() {
             </div>
 
             {/* Travel Guide */}
-            <Link
+            {/* <Link
               href="/travel-guide"
               className="px-3 py-2 text-sm font-bold text-gray-900 hover:text-primary transition-colors"
             >
               Travel Guide
-            </Link>
+            </Link> */}
             {/* Contact Us */}
             <Link
               href="/contact"
@@ -355,12 +357,12 @@ export default function Navbar() {
             >
               Contact Us
             </Link>
-            <Link
+            {/* <Link
               href="/travel-guide"
               className="block font-semibold text-gray-900 px-3 py-3 border-b"
             >
               Travel Guide
-            </Link>
+            </Link> */}
 
             <div className="mt-6 px-3">
               <a

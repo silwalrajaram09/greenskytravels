@@ -4,19 +4,21 @@ import { MapPin } from "lucide-react";
 
 interface DestinationCardProps {
   title: string;
+  slug: string;
   image: string;
   toursCount: number;
 }
 
 export default function DestinationCard({
   title,
+  slug,
   image,
   toursCount,
 }: DestinationCardProps) {
   return (
     <Link
-      href={`/destinations/${title.toLowerCase().replace(/ /g, "-")}`}
-      className="group relative block overflow-hidden rounded-2xl aspect-[4/5] shadow-lg"
+      href={`/destinations/${slug}`}
+      className="group relative block overflow-hidden  aspect-[4/5] shadow-lg"
     >
       <Image
         src={image}
