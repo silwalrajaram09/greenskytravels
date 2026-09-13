@@ -34,7 +34,7 @@ import { ReviewCarousel } from "@/components/packages/ReviewCarousel";
 import { GalleryLightbox } from "@/components/packages/GalleryLightbox";
 import { TabNavigation } from "@/components/packages/TabNavigation";
 import { PackageHeader } from "@/components/packages/PackageHeader";
-import { p } from "framer-motion/client";
+
 
 interface PageProps {
   params: Promise<{ slug: string; package_slug: string }>;
