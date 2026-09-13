@@ -1,11 +1,11 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import visaData, { VisaCategory, VisaItem } from "@/lib/data/visa";
+import visaData, { VisaCategory, VisaItem } from "@/lib/content/visa";
 import Breadcrumbs from "@/components/ui/Breadcrumbs";
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
-const WHATSAPP_NUMBER = "971585032337";
+import { getWhatsAppUrl } from "@/lib/config/site";
 
 const COUNTRY_ICONS: Record<string, string> = {
   "UAE VISA": "🇦🇪",
@@ -40,12 +40,13 @@ function formatCountryName(country: string): string {
     .replace(/\b\w/g, (c) => c.toUpperCase());
 }
 
-function whatsAppLink(country: string, visaName: string): string {
+function whatsAppLink(country: string, visaName: string, nationality: string): string {
   const message =
     `Hello Green Sky Travels! I'd like more details about the ` +
     `${formatVisaName(visaName)} (${formatCountryName(country)}). ` +
+    `My nationality is ${nationality}. ` +
     `Could you share the requirements, documents, and price?`;
-  return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+  return getWhatsAppUrl(message, "services");
 }
 
 function WhatsAppIcon({ className = "w-4 h-4" }: { className?: string }) {
@@ -68,6 +69,7 @@ export default function VisaPage() {
   }, [ctaCountry]);
   
   const [ctaVisa, setCtaVisa] = useState<string>(ctaAvailableVisas[0]?.name ?? "");
+  const [ctaNationality, setCtaNationality] = useState("");
 
   const handleCountryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const newCountry = e.target.value;
@@ -95,8 +97,12 @@ export default function VisaPage() {
 
   const handleCtaSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!ctaCountry || !ctaVisa) return;
-    window.open(whatsAppLink(ctaCountry, ctaVisa), "_blank", "noopener,noreferrer");
+    if (!ctaCountry || !ctaVisa || !ctaNationality.trim()) return;
+    window.open(
+      whatsAppLink(ctaCountry, ctaVisa, ctaNationality.trim()),
+      "_blank",
+      "noopener,noreferrer",
+    );
   };
 
   return (
@@ -195,9 +201,10 @@ export default function VisaPage() {
                   We might still be able to help. Our team processes dozens of visa types not listed here.
                 </p>
                 <a
-                  href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
-                    `Hello Green Sky Travels! I couldn't find a "${query}" visa on your site — could you help me out?`
-                  )}`}
+                  href={getWhatsAppUrl(
+                    `Hello Green Sky Travels! I couldn't find a "${query}" visa on your site — could you help me out?`,
+                    "services"
+                  )}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 rounded-xl bg-[#61a447] px-6 py-3 text-sm font-bold text-white shadow-sm transition hover:bg-[#4a8035]"
@@ -272,6 +279,21 @@ export default function VisaPage() {
                       </svg>
                     </div>
                   </div>
+                </div>
+
+                <div>
+                  <label htmlFor="cta-nationality" className="block text-xs font-bold text-[#a4b8c3] uppercase tracking-wider mb-2">
+                    Nationality <span className="text-[#61a447]">*</span>
+                  </label>
+                  <input
+                    id="cta-nationality"
+                    type="text"
+                    value={ctaNationality}
+                    onChange={(e) => setCtaNationality(e.target.value)}
+                    placeholder="Enter your nationality"
+                    required
+                    className="w-full rounded-lg border border-white/20 bg-white/5 px-4 py-3 text-white placeholder:text-white/50 outline-none focus:border-[#61a447] focus:ring-2 focus:ring-[#61a447]/20 transition-all"
+                  />
                 </div>
 
                 <button

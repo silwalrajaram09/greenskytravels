@@ -9,6 +9,7 @@ export default function VisaChangeForm() {
     visaType: "",
     lastDate: "",
     nationality: "",
+    preferredCity: "",
     service: "",
   });
 
@@ -27,7 +28,7 @@ export default function VisaChangeForm() {
 Visa Type: ${formData.visaType}
 Last Date: ${formData.lastDate}
 Nationality: ${formData.nationality}
-Service: ${formData.service}
+${formData.preferredCity ? `Preferred City: ${formData.preferredCity}\n` : ""}Service: ${formData.service}
 
 Kindly check and provide the best available fare and flight options.
 
@@ -58,7 +59,7 @@ Thank you.`;
       <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
         <div>
           <label htmlFor="visaType" className={labelClasses}>
-            Visa Type <span className="text-[#61a447]">*</span>
+           Current Visa Type <span className="text-[#61a447]">*</span>
           </label>
           <select
             id="visaType"
@@ -121,6 +122,25 @@ Thank you.`;
             <option value="">Select service type</option>
             <option value="Bus to Bus">Bus to Bus</option>
             <option value="Flight to Flight (A2A)">Flight to Flight (A2A)</option>
+          </select>
+        </div>
+
+        <div>
+          <label htmlFor="preferredCity" className={labelClasses}>
+            Preferred City <span className="font-normal text-slate-400">(Optional)</span>
+          </label>
+          <select
+            id="preferredCity"
+            name="preferredCity"
+            value={formData.preferredCity}
+            onChange={handleChange}
+            className={inputClasses}
+          >
+            <option value="">Select preferred city</option>
+            <option value="📍 Sharjah">📍 Sharjah</option>
+            <option value="📍 Dubai">📍 Dubai</option>
+            <option value="📍 AL AIN">📍 AL AIN</option>
+            <option value="📍 Abu Dhabi">📍 Abu Dhabi</option>
           </select>
         </div>
       </div>

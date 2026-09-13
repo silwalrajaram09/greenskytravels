@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, ChevronRight, MapPin } from "lucide-react";
 import PackageCard from "@/components/ui/package-card";
-import { dubaiNavGroups, popularDestinations } from "@/lib/data/packageData";
+import { dubaiNavGroups, popularDestinations } from "@/lib/content/catalog";
 import { getAllPackages } from "@/lib/packages/get-package";
 import type { TravelPackage } from "@/lib/packages/types";
 

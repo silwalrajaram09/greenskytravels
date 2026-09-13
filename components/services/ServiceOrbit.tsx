@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { getService } from "@/lib/data/services";
+import { getService } from "@/lib/content/services";
 
 export default function ServiceOrbit() {
   const orbitKeys = [

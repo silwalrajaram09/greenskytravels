@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
-import { destinationSlug } from "@/lib/data/packageData";
+import { destinationSlug } from "@/lib/content/catalog";
 import {
   ChevronLeft,
   ChevronRight,

@@ -1,4 +1,4 @@
-import { allTeamMembers } from "@/lib/data/teamData";
+import { allTeamMembers } from "@/lib/content/team";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";

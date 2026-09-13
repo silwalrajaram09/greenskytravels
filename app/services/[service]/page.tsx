@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import ServicePageShell from "@/components/services/ServicePageShell";
 import type { InquiryField } from "@/components/services/ServiceInquiryForm";
-import { getService, type ServiceKey } from "@/lib/data/services";
+import { getService, type ServiceKey } from "@/lib/content/services";
 
 type SupportedService = "hotels" | "transfers" | "insurance" | "corporate";
 

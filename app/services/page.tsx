@@ -4,7 +4,7 @@ import Link from "next/link";
 import { ChevronRight, ArrowRight, MessageCircle, Phone } from "lucide-react";
 import ServiceCard from "@/components/services/ServiceCard";
 import ServiceOrbit from "@/components/services/ServiceOrbit";
-import { services } from "@/lib/data/services";
+import { services } from "@/lib/content/services";
 import { getWhatsAppUrl, siteConfig } from "@/lib/config/site";
 import Image from "next/image";
 

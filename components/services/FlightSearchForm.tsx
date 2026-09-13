@@ -3,7 +3,7 @@
 import { useState, type FormEvent } from "react";
 import { Search, Plus, Trash2, MessageCircle } from "lucide-react";
 import AirportSelect from "@/components/ui/AirportSelect";
-import type { Airport } from "@/lib/data/airports";
+import type { Airport } from "@/lib/content/airports";
 import { getWhatsAppUrl } from "@/lib/config/site";
 
 type TripType = "One Way" | "Round Trip" | "Multi City";

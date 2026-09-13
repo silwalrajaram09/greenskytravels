@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import ServicePageShell from "@/components/services/ServicePageShell";
 import VisaChangeForm from "@/components/services/VisaChangeForm";
-import { getService } from "@/lib/data/services";
+import { getService } from "@/lib/content/services";
 
 export const metadata: Metadata = {
   title: "Visa Change Packages | Green Sky Travels",

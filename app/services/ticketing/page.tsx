@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import ServicePageShell from "@/components/services/ServicePageShell";
 import type { InquiryField } from "@/components/services/ServiceInquiryForm";
-import { getService } from "@/lib/data/services";
+import { getService } from "@/lib/content/services";
 
 export const metadata: Metadata = {
   title: "Air Ticketing | Green Sky Travels",

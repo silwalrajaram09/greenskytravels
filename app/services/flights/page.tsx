@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import ServicePageShell from "@/components/services/ServicePageShell";
 import FlightSearchForm from "@/components/services/FlightSearchForm";
-import { getService } from "@/lib/data/services";
+import { getService } from "@/lib/content/services";
 
 export const metadata: Metadata = {
   title: "Flight Requests | Green Sky Travels",

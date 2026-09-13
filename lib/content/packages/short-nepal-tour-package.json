@@ -1,0 +1,139 @@
+{
+  "slug": "short-nepal-tour-package",
+  "title": "Short Nepal Tour Package - 3 days",
+  "destination": "Nepal",
+  "duration": "15 Days",
+  "activities": "Adventure Trekking",
+  "accommodation": "Hotels",
+  "maxElevation": "2127m",
+  "groupSize": "Min. 2 Pax",
+  "vehicle": "Private Car/Van",
+  "meals": "Breakfast",
+  "heroImage": "/images/packages/everestBaseCamp/ev1.jpg",
+  "tripType": "Private Trip",
+
+  "highlights": [
+    "Scenic flight from Kathmandu to Lukla—one of the world’s most thrilling airports",
+    "Trek through Sagarmatha National Park, a UNESCO World Heritage Site",
+    "Explore Namche Bazaar, the gateway to Everest",
+    "Visit Tengboche Monastery, the largest and most spiritual in the region",
+    "Enjoy panoramic views of Everest, Lhotse, Ama Dablam, and more from multiple viewpoints",
+    "Experience high-altitude trekking and witness the stunning Khumbu Glacier",
+    "Reach Everest Base Camp (5,364 m)—the starting point for Everest expeditions",
+    "Hike to Kala Patthar (5,550 m) for the most breathtaking sunrise over Everest",
+    "Immerse in Sherpa culture, traditions, and mountain lifestyle",
+    "Trek along ancient trails used by legendary mountaineers"
+  ],
+  "overview": [
+    "Experience the cultural and spiritual wonders of Nepal with Green Sky Travels. This carefully curated 2-3 day itinerary takes you through the historic and sacred landmarks of Kathmandu, including UNESCO World Heritage Sites like Swayambhunath Stupa, Patan Durbar Square, Pashupatinath Temple, and Boudhanath. Enjoy breathtaking sunrise views over the Himalayas from Nagarkot and explore the ancient city of Bhaktapur. With expert guides, comfortable accommodations, and seamless travel arrangements, this tour promises an enriching and unforgettable experience. Book now with Green Sky Travels and immerse yourself in the essence of Nepal.",
+    "Enjoy an unforgettable journey to the heart of Nepal with our \"Short Nepal Tour Package.\" This itinerary is designed to give you a deep cultural and spiritual experience while exploring the iconic UNESCO World Heritage Sites of Kathmandu and its surrounding areas."
+  ],
+
+  "sections": [
+    {
+      "title": "Why Visit Kathmandu?",
+      "paragraphs": [
+        "Kathmandu, the capital of Nepal, is a city steeped in history, culture, and spirituality. Known as the \"City of Temples,\" it boasts a blend of Hindu and Buddhist traditions, reflected in its exquisite palaces, stupas, and courtyards. Whether you seek adventure, cultural immersion, or spiritual enlightenment, Kathmandu offers a unique and fulfilling experience."
+      ]
+    },
+    {
+      "title": "Why Choose Green Sky Travels?",
+      "paragraphs": [
+        "At Green Sky Travels, we are committed to delivering seamless and memorable travel experiences. With years of expertise in global tourism, we offer:",
+
+        "Personalized tour packages tailored to your preferences.",
+        "Expert local guides ensure insightful and enriching tours.",
+        "Hassle-free transportation and comfortable accommodations.",
+        "24/7 customer support to assist you throughout your journey."
+      ]
+    }
+  ],
+
+  "itinerary": [
+    {
+      "day": 1,
+      "title": "Arrival in Kathmandu Nepal and Hotel Transfers",
+      "description": "Upon your arrival, we shall welcome you at the airport with your name card and a traditional khada to greet you in Nepali style. Then we will escort you to your hotel. You can take a rest at your hotel or, if you prefer, explore the surroundings on your own. If time and interest allow, you may walk around the local markets and experience the city's atmosphere. In the evening, we will host a pre-trip meeting at your hotel, where you will meet your tour guide. The guide will provide a detailed briefing about the tour and share the plan for the next day. Enjoy your evening in Kathmandu at your leisure."
+    },
+    {
+      "day": 2,
+      "title": "Sightseeing in Kathmandu UNESCO World Heritage Sites",
+      "description": "After a delightful breakfast at the hotel, embark on a full-day sightseeing tour covering Kathmandu’s most significant cultural and historical landmarks:",
+      "highlights": [
+        {
+          "title": "Swayambhunath Stupa (Monkey Temple)",
+          "description": "An ancient Buddhist stupa offering panoramic views of Kathmandu Valley."
+        },
+        {
+          "title": "Patan Durbar Square",
+          "description": "It is a historical palace square renowned for its exquisite architecture and traditional craftsmanship."
+        },
+        {
+          "title": "Pashupatinath Temple",
+          "description": "A sacred Hindu temple dedicated to Lord Shiva, located along the banks of the Bagmati River."
+        },
+        {
+          "title": "Boudhanath Stupa",
+          "description": "One of the largest Buddhist stupas in the world, a major pilgrimage site for Tibetan Buddhists."
+        }
+      ],
+      "ending": "After an enriching day of exploration, return to the hotel for an overnight stay in Kathmandu.",
+      "duration": "5-7 hours"
+    },
+    {
+      "day": 3,
+      "title": "Trek from Phakding to Namche Bazaar (3440m)",
+      "description": "Early in the morning, drive to Nagarkot, a scenic hilltop destination known for its breathtaking sunrise views over the Himalayan range. After enjoying the mesmerizing sunrise, proceed to Bhaktapur Durbar Square, an ancient city filled with centuries-old temples, courtyards, and vibrant local culture.In the afternoon or evening, depending on your flight schedule, we will transfer you to the airport for your departure, marking the end of your incredible Kathmandu journey. Have a wonderful journey ahead. We look forward to welcome you back in near future for next holiday.",
+      "duration": "5-7 hours"
+    }
+  ],
+  "included": [
+    "Airport transfers in Kathmandu",
+    "Domestic flights (Kathmandu-Lukla-Kathmandu)",
+    "Accommodation in Kathmandu (before & after the trek)",
+    "Teahouse/lodge accommodations during the trek",
+    "All meals during the trek (breakfast, lunch, and dinner)",
+    "Experienced English-speaking trekking guide and porter",
+    "Sagarmatha National Park and Khumbu permits",
+    "First-aid kit and oxygen support (for emergencies)",
+    "Welcome & farewell dinner in Kathmandu",
+    "Trekking route map and trip briefing"
+  ],
+  "excluded": [
+    "International flights to/from Nepal",
+    "Nepal entry visa fees",
+    "Personal trekking gear (sleeping bags, down jackets, etc.)",
+    "Travel insurance (must cover high-altitude trekking)",
+    "Extra snacks, bottled water, and soft/alcoholic drinks",
+    "Tips for guides, porters, and staff",
+    "Personal expenses (laundry, Wi-Fi, hot showers, etc.)"
+  ],
+  "prices": [
+    {
+      "label": "1 - 2 Person",
+      "price": 1550
+    },
+    {
+      "label": "3 - 6 Person",
+      "price": 1350
+    },
+    {
+      "label": "7 - 12 Person",
+      "price": 1250
+    },
+    {
+      "label": "13 - 20 Person",
+      "price": 1200
+    }
+  ],
+  "goodToKnow": [
+    "Local Currency: Nepalese Rupee (NPR); ATMs are available in Kathmandu but limited in trekking areas.",
+    "Wi-Fi & Electricity: Internet and charging are available in lodges for a small fee. Solar power is commonly used at higher altitudes.",
+    "Drinking Water: Bottled water is available, but using water purification tablets or refilling at teahouses is recommended.",
+    "Emergency Services: Helicopter evacuation is available in case of emergencies but requires travel insurance that covers high-altitude evacuation.",
+    "Cultural Etiquette: Respect local customs, dress modestly in monasteries, and avoid touching prayer flags or religious objects without permission.",
+    "Trekking Permits: Our team will arrange all necessary permits before the trek begins."
+  ],
+  "featured": false,
+  "category": "Nepal Tours"
+}

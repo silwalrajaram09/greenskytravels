@@ -45,6 +45,7 @@ export type TravelPackage = {
   highlights: string[];
 
   overview: string;
+  tripType: string;
 
   sections?: {
     title: string;

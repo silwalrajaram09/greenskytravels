@@ -1,3 +1,5 @@
+import { siteConfig } from "@/lib/config/site";
+
 const faqs = [
   {
     question: "How do I book a tour package?",
@@ -36,8 +38,7 @@ const faqs = [
   },
   {
     question: "How do I contact you for support during my trip?",
-    answer:
-      "Our team is available 24/7 to assist you. You can reach us by phone at +971 4 570 2868 or +971 50 214 2541, or by email at info@greenskytravels.com.",
+    answer: `Our team is available 24/7 to assist you. You can reach us by phone at ${siteConfig.phone} or ${siteConfig.whatsappDisplay}, or by email at ${siteConfig.email}.`,
   },
 ];
 

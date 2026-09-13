@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { ChevronRight, Check, MessageCircle } from "lucide-react";
 import ServiceInquiryForm, { type InquiryField } from "@/components/services/ServiceInquiryForm";
-import type { ServiceDefinition } from "@/lib/data/services";
+import type { ServiceDefinition } from "@/lib/content/services";
 import React from "react";
 
 interface ServicePageShellProps {

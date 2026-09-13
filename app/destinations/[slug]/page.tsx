@@ -6,7 +6,7 @@ import {
   popularDestinations,
   destinationNavGroups,
   dubaiNavGroups,
-} from "@/lib/data/packageData";
+} from "@/lib/content/catalog";
 
 interface PageProps {
   params: Promise<{ slug: string }>;

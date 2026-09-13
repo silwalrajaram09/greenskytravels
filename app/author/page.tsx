@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { author } from "@/lib/data/author";
+import { author } from "@/lib/content/authors";
 import Image from "next/image";
 
 export const metadata = {

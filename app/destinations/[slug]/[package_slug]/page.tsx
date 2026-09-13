@@ -2,14 +2,9 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { destinationSlug } from "@/lib/data/packageData";
+import { destinationSlug } from "@/lib/content/catalog";
 import {
   Star,
-  BadgeCheck,
-  ShieldCheck,
-  CreditCard,
-  Landmark,
-  Wallet,
   Lock,
   Clock,
   Users,
@@ -39,6 +34,7 @@ import { ReviewCarousel } from "@/components/packages/ReviewCarousel";
 import { GalleryLightbox } from "@/components/packages/GalleryLightbox";
 import { TabNavigation } from "@/components/packages/TabNavigation";
 import { PackageHeader } from "@/components/packages/PackageHeader";
+import { p } from "framer-motion/client";
 
 interface PageProps {
   params: Promise<{ slug: string; package_slug: string }>;
@@ -125,10 +121,8 @@ export default async function PackagePage({ params }: PageProps) {
       />
 
       {/* Hero */}
-      
 
-      <PackageHeader pkg={pkg}  />
-     
+      <PackageHeader pkg={pkg} />
 
       {/* Quick facts strip */}
       <section className="border-b border-slate-200 bg-white">
@@ -136,13 +130,10 @@ export default async function PackagePage({ params }: PageProps) {
           <h1 className="text-2xl text-justify font-bold text-[#020617]">{pkg.title}</h1>
         </div> */}
         <div className="mx-auto grid max-w-7xl grid-cols-2 gap-4 px-4 py-6 md:grid-cols-3 lg:grid-cols-6 lg:px-8">
-           
           {quickFacts(pkg).map((fact) => (
-            
             <div key={fact.label} className="flex items-center gap-3">
               <fact.icon className="h-5 w-5 shrink-0 text-emerald-600" />
               <div>
-                
                 <p className="text-xs uppercase tracking-wide text-slate-400">
                   {fact.label}
                 </p>
@@ -157,7 +148,7 @@ export default async function PackagePage({ params }: PageProps) {
 
       {/* Tab Navigation */}
       <TabNavigation pkg={pkg} />
-      
+
       {/* Main Content with Sticky Booking */}
       <div className="mx-auto max-w-7xl px-4 lg:px-8">
         <div className="grid grid-cols-1 gap-8 py-8 lg:grid-cols-[1fr_380px] lg:items-start">
@@ -196,25 +187,51 @@ export default async function PackagePage({ params }: PageProps) {
             </section>
 
             {/* Extra Sections */}
-            {pkg.sections?.map((section) => (
-              <section
-                key={section.title}
-                id={section.title.toLowerCase().replace(/\s+/g, "-")}
-              >
-                <h2
-                  className={`${fraunces.className} text-2xl font-medium text-[#020617]`}
+            {pkg.sections?.map((section) => {
+              const [intro, ...points] = section.paragraphs ?? [];
+
+              return (
+                <section
+                  key={section.title}
+                  id={section.title.toLowerCase().replace(/\s+/g, "-")}
+                  className="scroll-mt-28"
                 >
-                  {section.title}
-                </h2>
-                <div className="mt-4 space-y-4">
-                  {section.paragraphs?.map((p, i) => (
-                    <p key={i} className="leading-relaxed text-slate-600">
-                      {p}
-                    </p>
-                  ))}
-                </div>
-              </section>
-            ))}
+                  <h2
+                    className={`${fraunces.className} text-2xl font-medium text-[#020617]`}
+                  >
+                    {section.title}
+                  </h2>
+
+                  <div className="mt-5 space-y-5">
+                    {/* Intro paragraph */}
+                    {intro && (
+                      <p className="leading-relaxed text-slate-600">
+                        {intro}
+                      </p>
+                    )}
+
+                    {/* Bullet points */}
+                    {points.length > 0 && (
+                      <ul className="space-y-4">
+                        {points.map((point, index) => (
+                          <li
+                            key={`${section.title}-${index}`}
+                            className="flex items-start gap-4 text-base leading-7 text-slate-700 md:text-lg"
+                          >
+                            <span
+                              aria-hidden="true"
+                              className="mt-2.5 h-3 w-3 shrink-0 rounded-full border-[3px] border-[#65a943]"
+                            />
+
+                            <span>{point}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </div>
+                </section>
+              );
+            })}
 
             {/* Gallery */}
             {pkg.gallery?.length > 0 && (
@@ -368,11 +385,11 @@ export default async function PackagePage({ params }: PageProps) {
 
           {/* Right Column - Sticky Booking Widget */}
           <aside className="relative lg:sticky lg:top-24 h-fit">
-      <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-lg">
+            <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-lg">
               <div className="flex items-center justify-between">
                 <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-50 px-3 py-1 text-xs font-semibold text-emerald-700">
                   <Lock className="h-3.5 w-3.5" />
-                  Private Trip
+                 {pkg.tripType}
                 </span>
                 <div className="flex items-center gap-1 text-sm">
                   <span className="flex items-center gap-1 font-bold text-[#020617]">
@@ -390,51 +407,18 @@ export default async function PackagePage({ params }: PageProps) {
                 </div>
               </div>
 
-             
               {/* Interactive Booking Widget */}
-              <BookingWidget
-                packageTitle={pkg.title}
-              />
-
-              {/* Trust Badges */}
-              <div className="mt-5 space-y-2.5 border-t border-slate-100 pt-4">
-                <div className="flex items-center gap-2 text-sm text-slate-600">
-                  <BadgeCheck className="h-4 w-4 shrink-0 text-emerald-600" />
-                  Best Price Guarantee
-                </div>
-                <div className="flex items-center gap-2 text-sm text-slate-600">
-                  <ShieldCheck className="h-4 w-4 shrink-0 text-emerald-600" />
-                  Fully Customizable Trip
-                </div>
-                <div className="flex items-center gap-2 text-sm text-slate-600">
-                  <Clock className="h-4 w-4 shrink-0 text-emerald-600" />
-                  {pkg.duration}
-                </div>
-                <div className="flex items-center gap-2 text-sm text-slate-600">
-                  <Users className="h-4 w-4 shrink-0 text-emerald-600" />
-                  {pkg.groupSize}
-                </div>
-              </div>
+              <BookingWidget packageTitle={pkg.title} />
 
               {/* Payment Methods */}
-              <div className="mt-5 border-t border-slate-100 pt-4">
-                <p className="text-xs font-semibold uppercase tracking-wide text-slate-400">
-                  We Accept
-                </p>
-                <div className="mt-3 flex flex-wrap items-center gap-2">
-                  <span className="inline-flex items-center gap-1 rounded-md border border-slate-200 px-3 py-1.5 text-xs font-semibold text-slate-600">
-                    <CreditCard className="h-3.5 w-3.5" /> Visa
-                  </span>
-                  <span className="inline-flex items-center gap-1 rounded-md border border-slate-200 px-3 py-1.5 text-xs font-semibold text-slate-600">
-                    <CreditCard className="h-3.5 w-3.5" /> Mastercard
-                  </span>
-                  <span className="inline-flex items-center gap-1 rounded-md border border-slate-200 px-3 py-1.5 text-xs font-semibold text-slate-600">
-                    <Landmark className="h-3.5 w-3.5" /> Bank Transfer
-                  </span>
-                  <span className="inline-flex items-center gap-1 rounded-md border border-slate-200 px-3 py-1.5 text-xs font-semibold text-slate-600">
-                    <Wallet className="h-3.5 w-3.5" /> PayPal
-                  </span>
-                </div>
+              <div className="mt-6 pt-1">
+                <Image
+                  src="/images/payment/cards-light.svg"
+                  alt="Visa, Mastercard, American Express, UnionPay and other accepted payment cards"
+                  width={262}
+                  height={35}
+                  className="h-auto w-full max-w-[262px]"
+                />
               </div>
             </div>
           </aside>

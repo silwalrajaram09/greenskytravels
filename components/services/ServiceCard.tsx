@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import type { ServiceDefinition } from "@/lib/data/services";
+import type { ServiceDefinition } from "@/lib/content/services";
 
 interface ServiceCardProps {
   service: ServiceDefinition;

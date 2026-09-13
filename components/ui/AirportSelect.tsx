@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect, useMemo } from "react";
 import { Plane } from "lucide-react";
-import { airports, type Airport } from "@/lib/data/airports";
+import { airports, type Airport } from "@/lib/content/airports";
 
 interface AirportSelectProps {
   label: string;

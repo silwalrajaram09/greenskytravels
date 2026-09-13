@@ -7,10 +7,15 @@ import {
   featuredPackages,
   popularDestinations,
   slugify,
-} from "@/lib/data/packageData";
+} from "@/lib/content/catalog";
 import HeroSection from "@/components/ui/herosection";
 import HomeServiceCards from "@/components/services/HomeServiceCards";
-export default function Home() {
+import HomeGateway from "@/components/home/HomeGateway";
+import HomeReviews from "@/components/home/HomeReviews";
+import { getHomepageReviews } from "@/lib/content/review";
+export default async function Home() {
+  const homepageReviews = await getHomepageReviews();
+
   return (
     <div className="flex flex-col min-h-screen">
       {/* Hero Section */}
@@ -102,6 +107,8 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Dubai Gateway Section */}
+      <HomeGateway />
       {/* Services Section */}
       <section className="py-24 bg-slate-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -166,7 +173,7 @@ export default function Home() {
                 image={pkg.image}
                 duration={pkg.duration}
                 groupSize="Flexible"
-                price={pkg.price}
+                price={pkg.price ?? ""}
                 rating={pkg.rating}
                 href={`/destinations/${slugify(pkg.destination)}/${pkg.slug}`}
               />
@@ -175,6 +182,8 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Reviews Section */}
+      <HomeReviews reviews={homepageReviews} />
       {/* CTA Section */}
       <section className="py-24 bg-secondary relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
