@@ -1,185 +1,86 @@
 import Image from "next/image";
-import Breadcrumbs from "@/components/ui/Breadcrumbs";
+import Link from "next/link";
+import { siteConfig } from "@/lib/config/site";
+import {
+  ArrowRight,
+  Check,
+  Compass,
+  Globe2,
+  HeartHandshake,
+  MapPin,
+  ShieldCheck,
+} from "lucide-react";
 
-export default function AboutPage() {
+
+export default function AboutUsPage() {
   return (
-    <div className="bg-gray-50 min-h-screen pb-12">
-      {/* Banner Section */}
-      <section className="relative h-[30vh] min-h-[250px] w-full overflow-hidden after:absolute after:inset-0 after:bg-black/25 after:z-10">
-        <Image
-          src="https://fis-api.greenskytravels.com/media/page/banner/about-us.jpg"
-          alt="About Us Banner"
-          fill
-          priority
-          className="object-cover"
-        />
-      </section>
-
-      {/* <Breadcrumbs /> */}
-
-      <div className="container mx-auto px-4 py-8 lg:w-9/12">
-        <div className="mb-6">
-          <h1 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6">
-            About us
-          </h1>
-          <div className="mt-2 flex items-center gap-1">
-            <span className="h-[3px] w-12 bg-[#61a447]" />
-            <span className="h-[3px] w-12 bg-[#61a447]" />
-            <span className="h-[3px] w-12 bg-[#61a447]" />
-            <span className="h-[3px] w-4 bg-red-500" />
+    <main className="bg-[#f7faf5] text-[#173c1c]">
+      <section className="relative overflow-hidden bg-[#eef8e9]">
+        <div className="absolute -right-20 -top-20 h-64 w-64 rounded-full border-[28px] border-[#dcefd3]" />
+        <div className="absolute bottom-0 left-0 hidden h-full w-[13%] bg-[#63ab43] [clip-path:polygon(0_0,100%_0,58%_50%,100%_100%,0_100%,42%_50%)] lg:block" />
+        <div className="relative mx-auto grid max-w-7xl gap-12 px-5 py-16 sm:px-8 sm:py-20 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:px-12 lg:py-24">
+          <div className="lg:pl-12">
+            <div className="mb-6 flex items-center gap-3 font-sans text-xs font-bold uppercase tracking-[0.22em] text-[#5a9b42]">
+              <span className="h-0.5 w-12 bg-[#d47f80]" />
+              The Green Sky story
+            </div>
+            <h1 className="max-w-2xl font-serif text-5xl font-bold leading-[1.03] tracking-tight text-[#123516] sm:text-6xl">
+              Travel should feel
+              <br />
+              <span className="text-[#63a844]">personal.</span>
+            </h1>
+            <p className="mt-6 max-w-xl font-serif text-lg leading-relaxed text-[#647264] sm:text-xl">
+              Green Sky Travels is a Dubai-based travel company built around one simple belief: the best journeys are thoughtfully planned and genuinely cared for.
+            </p>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <Link href="/destinations" className="inline-flex items-center gap-2 rounded-md bg-[#62ad43] px-6 py-3.5 font-serif font-bold text-white transition-colors hover:bg-[#4d9635]">
+                Explore destinations <ArrowRight className="h-4 w-4" />
+              </Link>
+              <Link href="/contact" className="inline-flex items-center rounded-md border border-[#b7d3ac] bg-white/60 px-6 py-3.5 font-serif font-bold text-[#315d2c] transition-colors hover:bg-white">
+                Talk to our team
+              </Link>
+            </div>
+          </div>
+          <div className="relative mx-auto w-full max-w-lg">
+            <div className="absolute -inset-3 rotate-3 rounded-2xl bg-[#cfe8c5]" />
+            <div className="relative overflow-hidden rounded-2xl bg-white p-3 shadow-[0_18px_50px_rgba(42,76,38,0.14)]">
+              <div className="relative aspect-[4/3] overflow-hidden rounded-xl">
+                <Image src="/images/travel-guide/ultimate-guide.avif" alt={`A beautiful destination discovered with ${siteConfig.name}`} fill priority className="object-cover" sizes="(max-width: 1024px) 100vw, 45vw" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#173c1c]/70 via-transparent to-transparent" />
+                <div className="absolute bottom-5 left-5 right-5 flex items-end justify-between text-white">
+                  <div><p className="font-sans text-xs uppercase tracking-[0.2em] text-[#cfe8c5]">Our point of view</p><p className="mt-1 font-serif text-2xl font-bold">See more. Feel more.</p></div>
+                  <Globe2 className="h-8 w-8 text-[#a8d997]" />
+                </div>
+              </div>
+            </div>
           </div>
         </div>
+      </section>
 
-        <article className="prose prose-slate max-w-none text-slate-700">
-          <p>
-            Welcome to <strong>Green Sky Travels</strong>, the trusted brand
-            name of Green Sky Travel and Tourism LLC. Based in Dubai, United
-            Arab Emirates, and registered in both Dubai and Abu Dhabi, we are a
-            leading travel and tour company dedicated to creating exceptional
-            travel experiences for individuals, families, and groups from all
-            over the world.
-          </p>
+      <section className="border-b border-[#e6eee2] bg-white">
+        <div className="mx-auto grid max-w-7xl grid-cols-2 divide-x divide-[#e6eee2] px-5 sm:grid-cols-4 sm:px-8 lg:px-12">
+          <div className="px-3 py-6 text-center sm:py-8"><p className="font-serif text-3xl font-bold">{siteConfig.establishedYear}</p><p className="mt-1 font-sans text-xs uppercase tracking-wider text-[#81917f]">Our beginning</p></div>
+          <div className="px-3 py-6 text-center sm:py-8"><p className="font-serif text-3xl font-bold">2</p><p className="mt-1 font-sans text-xs uppercase tracking-wider text-[#81917f]">UAE registrations</p></div>
+          <div className="hidden px-3 py-6 text-center sm:block sm:py-8"><p className="font-serif text-3xl font-bold">25+</p><p className="mt-1 font-sans text-xs uppercase tracking-wider text-[#81917f]">Countries covered</p></div>
+          <div className="hidden px-3 py-6 text-center sm:block sm:py-8"><p className="font-serif text-3xl font-bold">1</p><p className="mt-1 font-sans text-xs uppercase tracking-wider text-[#81917f]">Travel partner</p></div>
+        </div>
+      </section>
 
-          <h3 className="text-2xl font-bold text-slate-900 mt-8 mb-4">
-            Who We Are
-          </h3>
-          <p>
-            As a Dubai-based local tour operator, Green Sky Travels takes pride
-            in our deep-rooted knowledge of the UAE. Our expertise extends
-            beyond the borders of the Emirates, offering personalized holiday
-            packages to some of the most sought-after destinations worldwide.
-            From the shimmering sands of Dubai&apos;s deserts to the pristine
-            beaches of the Maldives and the historic wonders of Europe, we are
-            committed to turning your travel dreams into reality.
-          </p>
+      <section className="mx-auto grid max-w-7xl gap-12 px-5 py-16 sm:px-8 sm:py-20 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20 lg:px-12 lg:py-24">
+        <div><span className="font-sans text-xs font-bold uppercase tracking-[0.2em] text-[#62ad43]">Who we are</span><h2 className="mt-3 font-serif text-4xl font-bold leading-tight text-[#173c1c] sm:text-5xl">Local roots.<br />A world of reach.</h2></div>
+        <div className="font-serif text-lg leading-relaxed text-[#647264]"><p>Welcome to {siteConfig.name}, the trusted brand name of {siteConfig.legalName}. Based in {siteConfig.baseCity} and registered in {siteConfig.registeredIn.join(" and ")}, we create exceptional travel experiences for individuals, families, and groups from around the world.</p><p className="mt-6">Our roots are in the UAE. We know its deserts, cities, coastlines, and hidden corners—and we bring that same care to journeys across Asia, Europe, Africa, the Middle East, the Americas, and Oceania.</p><p className="mt-6">From the first idea to the final detail, our team combines practical expertise with a personal approach, so you can spend less time worrying about logistics and more time enjoying the journey.</p></div>
+      </section>
 
-          <h3 className="text-2xl font-bold text-slate-900 mt-8 mb-4">
-            What We Offer
-          </h3>
-          <p>
-            At Green Sky Travels, we provide a comprehensive range of services
-            to ensure a seamless and memorable journey:
-          </p>
+      <section className="bg-white py-16 sm:py-20 lg:py-24"><div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-12"><div className="mb-10 max-w-2xl"><span className="font-sans text-xs font-bold uppercase tracking-[0.2em] text-[#62ad43]">What we do</span><h2 className="mt-3 font-serif text-4xl font-bold tracking-tight text-[#173c1c] sm:text-5xl">Everything you need<br />for a smoother journey.</h2></div><div className="grid gap-6 md:grid-cols-3"><div className="rounded-xl border border-[#e2ecdf] p-7"><MapPin className="h-8 w-8 text-[#62ad43]" /><h3 className="mt-6 font-serif text-2xl font-bold text-[#244622]">UAE experiences</h3><p className="mt-3 font-serif leading-relaxed text-[#647264]">Dubai, Abu Dhabi, desert adventures, luxury escapes, and thoughtfully designed local tours.</p></div><div className="rounded-xl border border-[#e2ecdf] p-7"><Compass className="h-8 w-8 text-[#62ad43]" /><h3 className="mt-6 font-serif text-2xl font-bold text-[#244622]">Worldwide holidays</h3><p className="mt-3 font-serif leading-relaxed text-[#647264]">Tailored packages across the world, built around your pace, preferences, and purpose.</p></div><div className="rounded-xl border border-[#e2ecdf] p-7"><ShieldCheck className="h-8 w-8 text-[#62ad43]" /><h3 className="mt-6 font-serif text-2xl font-bold text-[#244622]">Visa assistance</h3><p className="mt-3 font-serif leading-relaxed text-[#647264]">Clear, reliable support for UAE and international visa applications and documentation.</p></div></div></div></section>
 
-          <h4 className="text-lg font-bold text-slate-900 mt-6 mb-3">
-            UAE Tour Packages:
-          </h4>
-          <ul className="list-disc pl-5 mt-2 space-y-1">
-            <li>
-              <strong>Dubai Tour Packages</strong>
-            </li>
-            <li>
-              <strong>Abu Dhabi Tours</strong>
-            </li>
-            <li>
-              <strong>Adventure Tours in the UAE</strong>
-            </li>
-            <li>
-              <strong>Luxury Tours in Dubai and Beyond</strong>
-            </li>
-          </ul>
+      <section className="mx-auto max-w-7xl px-5 py-16 sm:px-8 lg:px-12 lg:py-24"><div className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:items-start"><div><span className="font-sans text-xs font-bold uppercase tracking-[0.2em] text-[#62ad43]">Our promise</span><h2 className="mt-3 font-serif text-4xl font-bold tracking-tight text-[#173c1c] sm:text-5xl">Why travelers choose Green Sky.</h2></div><div className="grid gap-5">{[
+        ["Local expertise", "Deep knowledge of Dubai, Abu Dhabi, and the wider UAE means better recommendations and fewer surprises."],
+        ["Global reach", "Our network spans destinations across continents, giving you more ways to see the world with confidence."],
+        ["Personalized service", "We listen to your needs and tailor each itinerary instead of forcing you into a one-size-fits-all package."],
+        ["Complete support", "From tour planning to visa processing, we coordinate the details so your trip feels seamless."],
+      ].map(([title, description]) => <div key={title} className="flex gap-4 rounded-xl bg-white p-5 ring-1 ring-[#e2ecdf]"><span className="mt-1 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#eef8e9] text-[#62ad43]"><Check className="h-4 w-4" /></span><div><h3 className="font-serif text-xl font-bold text-[#244622]">{title}</h3><p className="mt-1 font-serif leading-relaxed text-[#647264]">{description}</p></div></div>)}</div></div></section>
 
-          <h4 className="text-lg font-bold text-slate-900 mt-6 mb-3">
-            Worldwide Holiday Packages:
-          </h4>
-          <p>We specialize in creating tailored travel packages for:</p>
-          <ul className="list-disc pl-5 mt-2 space-y-1">
-            <li>
-              <strong>Asia:</strong> Nepal, India, Bhutan, Sri Lanka, Maldives,
-              Thailand, Malaysia, and more.
-            </li>
-            <li>
-              <strong>Europe:</strong> Unforgettable tours across all European
-              countries.
-            </li>
-            <li>
-              <strong>Africa:</strong> Kenya, Tanzania, Rwanda, and beyond.
-            </li>
-            <li>
-              <strong>Americas:</strong> Iconic destinations in North and South
-              America.
-            </li>
-            <li>
-              <strong>Middle East:</strong> Explore the rich culture of Armenia,
-              Azerbaijan, Georgia, and others.
-            </li>
-            <li>
-              <strong>Oceania:</strong> Australia, New Zealand, and nearby
-              islands.
-            </li>
-          </ul>
-
-          <h4 className="text-lg font-bold text-slate-900 mt-6 mb-3">
-            Visa Assistance Services:
-          </h4>
-          <p>
-            Our dedicated team offers expert assistance in obtaining visas for
-            the UAE and international destinations, ensuring a hassle-free
-            travel experience for both residents of the UAE and global
-            travelers.
-          </p>
-
-          <h3 className="text-2xl font-bold text-slate-900 mt-8 mb-4">
-            Why Choose us?
-          </h3>
-          <ol className="list-decimal pl-5 mt-2 space-y-2">
-            <li>
-              <strong>Local Expertise:</strong> With a strong presence in Dubai
-              and Abu Dhabi, we offer unparalleled insights into UAE tourism.
-            </li>
-            <li>
-              <strong>Global Reach:</strong> From Middle Eastern destinations to
-              Europe, Asia, Africa, and beyond, our packages cover a vast range
-              of travel interests.
-            </li>
-            <li>
-              <strong>Personalized Service:</strong> We tailor every package to
-              suit your preferences, ensuring a unique and unforgettable
-              journey.
-            </li>
-            <li>
-              <strong>Comprehensive Travel Solutions:</strong> From visa
-              processing to tour planning, we handle every detail so you can
-              travel stress-free.
-            </li>
-          </ol>
-
-          <h3 className="text-2xl font-bold text-slate-900 mt-8 mb-4">
-            Our Mission
-          </h3>
-          <p>
-            At Green Sky Travels, our mission is to inspire, connect, and
-            deliver exceptional travel experiences. We strive to combine
-            professionalism with passion, offering unparalleled service to every
-            client.
-          </p>
-
-          <h3 className="text-2xl font-bold text-slate-900 mt-8 mb-4">
-            Our Vision
-          </h3>
-          <p>
-            We envision becoming the leading tour operator in the UAE and a
-            globally recognized name for exceptional travel services. Our goal
-            is to consistently exceed expectations by providing innovative and
-            sustainable travel solutions.
-          </p>
-
-          <h3 className="text-2xl font-bold text-slate-900 mt-8 mb-4">
-            Let&apos;s Plan Your Next Adventure
-          </h3>
-          <p>
-            Discover the world with Green Sky Travels. Whether you&apos;re
-            exploring the vibrant cities of the UAE or embarking on an
-            international journey, we are here to guide you every step of the
-            way. Experience the difference with a team that genuinely cares
-            about your travel aspirations.
-          </p>
-          <p className="mt-4">
-            Contact us today to start planning your next adventure. Your journey
-            begins here.
-          </p>
-        </article>
-      </div>
-    </div>
+      <section className="bg-[#173c1c] px-5 py-14 sm:px-8"><div className="mx-auto flex max-w-5xl flex-col items-center justify-between gap-7 text-center sm:flex-row sm:text-left"><div><p className="flex items-center gap-2 font-sans text-xs font-bold uppercase tracking-[0.2em] text-[#a8d997]"><HeartHandshake className="h-4 w-4" /> Your journey starts here</p><h2 className="mt-3 font-serif text-3xl font-bold text-white sm:text-4xl">Tell us where you want to go.</h2></div><Link href="/contact" className="inline-flex shrink-0 items-center gap-2 rounded-md bg-[#62ad43] px-7 py-3.5 font-serif font-bold text-white transition-colors hover:bg-[#78bd5a]">Start planning <ArrowRight className="h-4 w-4" /></Link></div></section>
+    </main>
   );
 }

@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { Calendar } from "lucide-react";
+import { Calendar, CheckCircle2 } from "lucide-react";
+import { getWhatsAppUrl } from "@/lib/config/site";
 
 interface BookingWidgetProps {
   packageTitle: string;
@@ -13,12 +14,12 @@ export function BookingWidget({ packageTitle }: BookingWidgetProps) {
 
   const minDate = new Date().toISOString().split("T")[0];
 
-  const whatsappMessage = encodeURIComponent(
+  const whatsappUrl = getWhatsAppUrl(
     `Hello! I am interested in booking the "${packageTitle}" package.\n\n` +
       `Booking Details:\n` +
       `- Date: ${selectedDate || "Not selected yet"}\n` +
       `- Travelers: ${pax}\n\n` +
-      `Could you please provide the available options and pricing?`
+      `Could you please provide the available options and pricing?`,
   );
 
   return (
@@ -77,7 +78,7 @@ export function BookingWidget({ packageTitle }: BookingWidgetProps) {
 
       {/* Book Button */}
       <a
-        href={`https://wa.me/971502142541?text=${whatsappMessage}`}
+        href={whatsappUrl}
         target="_blank"
         rel="noopener noreferrer"
         className="block w-full rounded-lg bg-emerald-600 py-3 text-center text-sm font-semibold text-white transition-colors hover:bg-emerald-700"
@@ -86,15 +87,19 @@ export function BookingWidget({ packageTitle }: BookingWidgetProps) {
       </a>
 
       {/* Trust Information */}
-      <div className="flex flex-wrap items-center justify-between gap-2 text-xs">
-        <span className="flex items-center gap-1 text-slate-500">
-          <span className="inline-block h-1.5 w-1.5 rounded-full bg-emerald-500" />
-          Book Instantly Directly with Provider
-        </span>
-
-        <span className="text-slate-400">
-          Fully Customizable
-        </span>
+      <div className="mt-6 space-y-2.5">
+        <div className="flex items-center gap-2 text-sm text-slate-600">
+          <CheckCircle2 className="h-5 w-5 shrink-0 text-[#65a943]" />
+          <span>Book Instantly Directly with Provider</span>
+        </div>
+        <div className="flex items-center gap-2 text-sm text-slate-600">
+          <CheckCircle2 className="h-5 w-5 shrink-0 text-[#65a943]" />
+          <span>Best Price guarantee</span>
+        </div>
+        <div className="flex items-center gap-2 text-sm text-slate-600">
+          <CheckCircle2 className="h-5 w-5 shrink-0 text-[#65a943]" />
+          <span>Fully Customizable Trip</span>
+        </div>
       </div>
     </div>
   );

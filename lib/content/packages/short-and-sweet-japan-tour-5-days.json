@@ -1,0 +1,149 @@
+{
+  "slug": "short-and-sweet-japan-tour-5-days",
+  "title": "Short and Sweet Japan Tour - 5 days",
+  "destination": "Japan",
+  "duration": "5 days",
+  "activities": "Family-Friendly Tours",
+  "tripType": "Cultural and Family Tour",
+  "accommodation": "Hotels",
+  "groupSize": "Min. 2 Pax",
+  "vehicle": "Private Car/Van",
+  "meals": "Breakfast",
+  "heroImage": "/images/destinations/japan.avif",
+  "gallery": [],
+  "highlights": [
+    "Explore the dazzling city of Tokyo, the heart of modern Japan.",
+    "Visit the historic Fushimi Inari Shrine in Kyoto, famous for its iconic Torii gates.",
+    "Discover breathtaking views of Mt. Fuji and cruise along Lake Ashi.",
+    "Experience authentic Japanese culture in Osaka, the city of flavors and entertainment.",
+    "Indulge in exquisite Japanese cuisine, including sushi, ramen, and tempura.",
+    "Witness the beauty of traditional Geisha culture in Kyoto."
+  ],
+  "overview": "Join Green Sky Travels for an immersive tour of Japan, where ancient traditions blend seamlessly with modern innovations. This carefully curated itinerary takes you through the bustling streets of Tokyo, the serene temples of Kyoto, and the vibrant culture of Osaka. Experience the beauty of cherry blossoms in spring, savor authentic Japanese cuisine, and explore Japan’s rich history and cutting-edge technology. Whether you are a culture enthusiast, adventure seeker, or simply looking to discover new horizons, this Japan tour promises unforgettable memories at every turn.",
+  "sections": [
+    {
+      "title": "Why Visit Japan?",
+      "paragraphs": [
+        "Japan is a mesmerizing fusion of ancient traditions and futuristic marvels. From the breathtaking cherry blossoms of Kyoto to the vibrant neon streets of Tokyo, Japan offers a unique blend of history, culture, technology, and natural beauty.",
+        "Indulge in world-class sushi, experience the serenity of Zen gardens, and explore majestic temples that tell stories of a rich past. A journey to Japan is a deep dive into a land of wonders, where every moment is a new discovery."
+      ]
+    }
+  ],
+  "distanceAndAltitude": [],
+  "itinerary": [
+    {
+      "day": 1,
+      "title": "Arrival in Tokyo – Explore the Vibrant Capital",
+      "description": [
+        "Arrive at Narita or Haneda Airport and transfer to the hotel.",
+        "Check in and relax after your flight.",
+        "Overnight stay in Tokyo."
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Tokyo City Tour & Bullet Train Experience",
+      "description": [
+        "Discover Tokyo’s modern cityscape and cultural landmarks.",
+        "Enjoy the bullet train experience as you continue your journey through Japan."
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Kyoto & Nara – A Cultural Journey",
+      "description": [
+        "Explore Kyoto’s historic temples and traditional streets.",
+        "Visit the iconic Fushimi Inari Shrine and experience the cultural heritage of Kyoto and Nara."
+      ]
+    },
+    {
+      "day": 4,
+      "title": "Osaka – The City of Flavors & Fun",
+      "description": [
+        "Experience Osaka’s lively atmosphere, entertainment and local food culture.",
+        "Enjoy authentic Japanese cuisine, including sushi, ramen and tempura."
+      ]
+    },
+    {
+      "day": 5,
+      "title": "Departure – Sayonara, Japan!",
+      "description": [
+        "After breakfast, check out from the hotel.",
+        "Transfer to the airport for your onward journey."
+      ]
+    }
+  ],
+  "included": [
+    "4 nights’ accommodation in premium hotels",
+    "Daily breakfast",
+    "Airport transfers and local transportation",
+    "Bullet train experience from Tokyo to Kyoto",
+    "Guided sightseeing tours",
+    "Entrance fees to attractions as per the itinerary",
+    "Professional English-speaking guide",
+    "24/7 travel assistance"
+  ],
+  "excluded": [
+    "International airfare",
+    "Japan visa fees",
+    "Travel insurance",
+    "Lunch and dinner",
+    "Personal expenses and optional activities"
+  ],
+  "prices": [
+    {
+      "label": "1 - 2 Person",
+      "price": 2000
+    },
+    {
+      "label": "3 - 6 Person",
+      "price": 1900
+    },
+    {
+      "label": "7 - 12 Person",
+      "price": 1800
+    },
+    {
+      "label": "13 - 20 Person",
+      "price": 1600
+    }
+  ],
+  "goodToKnow": [
+    "Currency: Japanese Yen (JPY).",
+    "Language: Japanese; English is widely understood in tourist areas.",
+    "Plug type: Type A/B (110V).",
+    "Weather varies by season: spring is mild, summer is hot, autumn is cool and winter is cold."
+  ],
+  "featured": false,
+  "category": "Japan Tours",
+  "reviews": [
+    {
+      "name": "Ethan Taylor",
+      "date": "18th Jul, 2024",
+      "title": "Stress-Free Planning and Great Service",
+      "review": "The team at Green Sky Travels made my Dubai trip stress-free. The itinerary was perfect, and both the guide and driver were fantastic. I’ll definitely book with them again!",
+      "rating": 5
+    },
+    {
+      "name": "Sofia Moretti",
+      "date": "19th Jul, 2022",
+      "title": "A Memorable Weekend in Kathmandu",
+      "review": "Green Sky Travels made my weekend trip to Kathmandu unforgettable. The visit to Boudhanath Stupa was spiritual, and the vibrant local markets were a highlight. Great team and great organization!",
+      "rating": 5
+    },
+    {
+      "name": "Noah Carter",
+      "date": "19th Jul, 2022",
+      "title": "Smooth and Well-Planned Tour",
+      "review": "This tour was so well-organized! The guide made Nepal’s history come alive at Kathmandu Durbar Square, and the driver was polite and punctual. It was a smooth and enjoyable journey.",
+      "rating": 5
+    },
+    {
+      "name": "Ethan Brown",
+      "date": "9th May, 2022",
+      "title": "Amazing Temples and Friendly Team",
+      "review": "This tour was exactly what I needed for my short stay in Nepal. The guides were friendly and knowledgeable, and the team made visiting the temples and local markets a breeze. Amazing experience overall!",
+      "rating": 5
+    }
+  ]
+}

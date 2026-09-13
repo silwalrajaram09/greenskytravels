@@ -1,8 +1,8 @@
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
-import blogData from "@/lib/data/travel-guide/blog.json";
-import { author as defaultAuthor } from "@/lib/data/author";
+import blogData from "@/lib/content/travel-guide/blog.json";
+import { author as defaultAuthor } from "@/lib/content/authors";
 
 
 export function generateStaticParams() {

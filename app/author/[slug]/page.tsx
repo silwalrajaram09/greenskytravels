@@ -1,7 +1,7 @@
-import { author } from "@/lib/data/author";
+import { author } from "@/lib/content/authors";
 import Image from "next/image";
 import Link from "next/link";
-import blogData from "@/lib/data/travel-guide/blog.json";
+import blogData from "@/lib/content/travel-guide/blog.json";
 import { User, Globe } from "lucide-react";
 
 export function generateStaticParams() {

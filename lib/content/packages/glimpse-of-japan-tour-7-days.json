@@ -1,0 +1,153 @@
+{
+  "slug": "glimpse-of-japan-tour-7-days",
+  "title": "Glimpse of Japan Tour - 7 days",
+  "destination": "Japan",
+  "duration": "7 days",
+  "activities": "Family-Friendly Tours",
+  "tripType": "Cultural and Family Tour",
+  "accommodation": "3-star Hotels",
+  "groupSize": "Min. 2 Pax",
+  "vehicle": "Private Car/Van",
+  "meals": "Breakfast",
+  "heroImage": "/images/destinations/japan.avif",
+  "gallery": [],
+  "highlights": [
+    "Visit Tokyo’s top landmarks and experience its modern-day culture.",
+    "Enjoy scenic views of Mount Fuji and Lake Hakone.",
+    "Take cultural tours in Kyoto and Nara, including historical sites.",
+    "Ride the famous Shinkansen Bullet Train.",
+    "Enjoy a free day in Osaka for personal exploration."
+  ],
+  "overview": "Embark on a mesmerizing 7-day tour of Japan, exploring Tokyo, Mount Fuji, Kyoto, and Osaka. This all-inclusive package offers guided city tours, cultural experiences, and breathtaking views. Enjoy the comfort of 3-star hotels, transportation on a private basis, and guided sightseeing. Whether it’s the hustle of Tokyo, the natural beauty of Mount Fuji, or the cultural wonders of Kyoto, this trip has something for everyone.",
+  "sections": [
+    {
+      "title": "Explore Japan in Seven Days",
+      "paragraphs": [
+        "Explore a 7-day tour of Japan, covering the iconic cities of Tokyo, Mount Fuji, Kyoto, and Osaka. Enjoy guided city tours, scenic views, and cultural experiences, including visits to Tokyo Tower, Lake Hakone, the Golden Pavilion, and more.",
+        "The package includes comfortable 3-star accommodations, breakfast, private transportation, and expert guidance."
+      ]
+    }
+  ],
+  "distanceAndAltitude": [],
+  "itinerary": [
+    {
+      "day": 1,
+      "title": "Arrival at Tokyo Airport",
+      "description": [
+        "Arrive at Narita International Airport in Tokyo.",
+        "Meet our representative and transfer to your hotel in Tokyo.",
+        "Check in and relax after your flight, or spend the rest of the day exploring the local surroundings at leisure."
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Full Day Tokyo City Tour",
+      "description": [
+        "Discover Tokyo’s key landmarks and experience the modern culture of Japan’s vibrant capital.",
+        "Enjoy guided sightseeing through the city’s famous attractions."
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Full Day Mount Fuji & Lake Hakone Tour",
+      "description": [
+        "Travel to the Mount Fuji region for scenic views of Japan’s iconic mountain.",
+        "Explore Lake Hakone and enjoy the natural beauty of the surrounding area."
+      ]
+    },
+    {
+      "day": 4,
+      "title": "Bullet Train from Tokyo to Osaka",
+      "description": [
+        "Experience Japan’s famous Shinkansen bullet train.",
+        "Travel from Tokyo to Osaka and continue your Japan journey."
+      ]
+    },
+    {
+      "day": 5,
+      "title": "Full Day Kyoto and Nara Tour",
+      "description": [
+        "Explore the cultural and historical highlights of Kyoto and Nara.",
+        "Visit traditional sites including the Golden Pavilion and other important landmarks."
+      ]
+    },
+    {
+      "day": 6,
+      "title": "Free Day in Osaka",
+      "description": [
+        "Enjoy a free day in Osaka for personal exploration, shopping, food and independent activities."
+      ]
+    },
+    {
+      "day": 7,
+      "title": "Departure",
+      "description": [
+        "Check out from the hotel and transfer to Kansai International Airport for departure."
+      ]
+    }
+  ],
+  "included": [
+    "3-star hotels with daily breakfast",
+    "Private airport pick-up from Narita Airport and drop-off at Kansai International Airport",
+    "Entrance ticket to Tokyo Skytree",
+    "English-speaking driver-guide",
+    "All taxes"
+  ],
+  "excluded": ["Anything not included in the inclusions"],
+  "prices": [
+    {
+      "label": "1 - 2 Person",
+      "price": 2900
+    },
+    {
+      "label": "3 - 6 Person",
+      "price": 2800
+    },
+    {
+      "label": "7 - 12 Person",
+      "price": 2700
+    },
+    {
+      "label": "13 - 20 Person",
+      "price": 2600
+    }
+  ],
+  "goodToKnow": [
+    "Currency: Japanese Yen (JPY).",
+    "Language: Japanese; English is widely understood in tourist areas.",
+    "Weather varies by region, so pack according to the season and destinations visited.",
+    "The tour is suitable for all seasons, but warm clothing is recommended for Mount Fuji."
+  ],
+  "featured": false,
+  "category": "Japan Tours",
+  "reviews": [
+    {
+      "name": "Ethan Taylor",
+      "date": "18th Jul, 2024",
+      "title": "Stress-Free Planning and Great Service",
+      "review": "The team at Green Sky Travels made my Dubai trip stress-free. The itinerary was perfect, and both the guide and driver were fantastic. I’ll definitely book with them again!",
+      "rating": 5
+    },
+    {
+      "name": "Sofia Moretti",
+      "date": "19th Jul, 2022",
+      "title": "A Memorable Weekend in Kathmandu",
+      "review": "Green Sky Travels made my weekend trip to Kathmandu unforgettable. The visit to Boudhanath Stupa was spiritual, and the vibrant local markets were a highlight. Great team and great organization!",
+      "rating": 5
+    },
+    {
+      "name": "Noah Carter",
+      "date": "19th Jul, 2022",
+      "title": "Smooth and Well-Planned Tour",
+      "review": "This tour was so well-organized! The guide made Nepal’s history come alive at Kathmandu Durbar Square, and the driver was polite and punctual. It was a smooth and enjoyable journey.",
+      "rating": 5
+    },
+    {
+      "name": "Ethan Brown",
+      "date": "9th May, 2022",
+      "title": "Amazing Temples and Friendly Team",
+      "review": "This tour was exactly what I needed for my short stay in Nepal. The guides were friendly and knowledgeable, and the team made visiting the temples and local markets a breeze. Amazing experience overall!",
+      "rating": 5
+    }
+  ]
+}

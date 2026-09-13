@@ -1,306 +1,328 @@
-import { MapPin, Mail, Phone, MessageCircle } from "lucide-react";
+import {
+  ArrowUpRight,
+  Clock3,
+  Mail,
+  MapPin,
+  MessageCircle,
+  Phone,
+  Send,
+} from "lucide-react";
 import {
   FaFacebook,
   FaInstagram,
-  FaTwitter,
   FaLinkedin,
-  FaYoutube,
   FaPinterest,
   FaTiktok,
+  FaTwitter,
+  FaYoutube,
 } from "react-icons/fa";
-import Breadcrumbs from "@/components/ui/Breadcrumbs";
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
+import { getWhatsAppUrl, siteConfig } from "@/lib/config/site";
+
+const socialLinks = [
+  {
+    label: "Facebook",
+    href: "https://www.facebook.com/share/1BLCvezQjh/?mibextid=LQQJ4d",
+    icon: FaFacebook,
+    color: "bg-[#1877f2]",
+  },
+  {
+    label: "Twitter",
+    href: "#",
+    icon: FaTwitter,
+    color: "bg-[#1da1f2]",
+  },
+  {
+    label: "Instagram",
+    href: "https://www.instagram.com/greenskytravels?igsh=MXdhdWlrMXI4MTJ2cQ==",
+    icon: FaInstagram,
+    color: "bg-[#e4405f]",
+  },
+  {
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/company/green-sky-travels/",
+    icon: FaLinkedin,
+    color: "bg-[#0a66c2]",
+  },
+  {
+    label: "YouTube",
+    href: "#",
+    icon: FaYoutube,
+    color: "bg-[#cd201f]",
+  },
+  {
+    label: "Pinterest",
+    href: "https://pin.it/3PBXYc0el",
+    icon: FaPinterest,
+    color: "bg-[#bd081c]",
+  },
+  {
+    label: "TikTok",
+    href: "#",
+    icon: FaTiktok,
+    color: "bg-black",
+  },
+];
+
+const enquiryFields = [
+  { label: "Full name", placeholder: "Your full name", type: "text" },
+  { label: "Email address", placeholder: "you@example.com", type: "email" },
+  { label: "Travellers", placeholder: "Number of travellers", type: "number" },
+];
 
 export default function ContactPage() {
+  const whatsappUrl = getWhatsAppUrl(
+    "Hello Green Sky Travels! I would like help planning my next trip.",
+  );
+
   return (
-    <div className="bg-white min-h-screen pb-12">
-      {/* <Breadcrumbs /> */}
-
-      <div className="container mx-auto px-4 py-4 lg:w-9/12">
-        <div className="mb-8">
-          <h1 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6">
-            Contact us
-          </h1>
-          <div className="mt-2 flex items-center gap-1">
-            <span className="h-[3px] w-12 bg-[#61a447]" />
-            <span className="h-[3px] w-12 bg-[#61a447]" />
-            <span className="h-[3px] w-12 bg-[#61a447]" />
-            <span className="h-[3px] w-12 bg-[#61a447]" />
-            <span className="h-[3px] w-4 bg-red-500" />
-          </div>
-        </div>
-
-        <article className="prose prose-slate max-w-none text-slate-700 mb-12">
-          <p className="font-bold text-slate-900">
-            Get in Touch with Green Sky Travels
-          </p>
-          <p>
-            We're here to help you plan your next unforgettable adventure!
-            Whether you have questions about our tours, need help customizing
-            your trip, or require visa assistance, our team is ready to assist
-            you.
-          </p>
-          <p>&nbsp;</p>
-
-          <p className="font-bold text-slate-900">Stay Connected</p>
-          <p>
-            Follow us on social media for the latest travel updates, deals, and
-            inspiration:
-            <br />
-            <strong>
-              <a
-                href="https://www.facebook.com/people/Green-Sky-Travel-Tourism-LLC/61569895568599/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Facebook
-              </a>
-            </strong>
-            <br />
-            <strong>Instagram</strong>
-            <br />
-            <strong>Twitter</strong>
-          </p>
-
-          <h3 className="text-2xl font-bold text-slate-900 mt-8 mb-4">
-            Our Contact Information
-          </h3>
-
-          <h4 className="text-lg font-bold text-slate-900 mt-6 mb-2">
-            Dubai Office
-          </h4>
-          <p>
-            Green Sky Travel and Tourism LLC
-            <br />
-            <strong>Address:</strong> Salim Building, Al Souq Al Kabeer, near
-            Mena Bazar, BurDubai, Dubai United Arab Emirates
-            <br />
-            <strong>Phone:</strong> +971 4 570 2868, +971 50 214 2541 (Hotline)
-            <br />
-            <strong>Email:</strong> info@greenskytravels.com
-          </p>
-
-          <h4 className="text-lg font-bold text-slate-900 mt-6 mb-2">
-            Abu Dhabi Office
-          </h4>
-          <p>
-            Green Sky Travel and Tourism LLC
-            <br />
-            <strong>Address:</strong>&nbsp;
-            <br />
-            <strong>Phone:</strong>&nbsp;
-            <br />
-            <strong>Email:</strong>&nbsp;
-          </p>
-
-          <p className="font-bold text-slate-900 mt-8">We're Here for You</p>
-          <p>
-            At Green Sky Travels, your satisfaction is our priority. Don't
-            hesitate to contact us for any inquiries, feedback, or assistance.
-            We look forward to helping you plan your perfect journey!
-          </p>
-        </article>
-
-        <div className="grid lg:grid-cols-5 gap-8 lg:gap-12">
-          {/* Contact Information List */}
-          <div className="lg:col-span-2 space-y-6">
-            <ul className="space-y-6">
-              <li className="flex items-start gap-4">
-                <MapPin className="w-6 h-6 text-greensky-green flex-shrink-0 mt-1" />
-                <div>
-                  <span className="block font-bold text-lg text-slate-900">
-                    Salem Latif Building, Al Suq Al Kabeer, Dubai, United Arab
-                    Emirates
-                  </span>
-                  <span className="text-sm text-slate-500 font-bold">
-                    P.O. Box: .
-                  </span>
-                </div>
-              </li>
-              <li className="flex items-start gap-4">
-                <Mail className="w-6 h-6 text-greensky-green flex-shrink-0 mt-1" />
-                <div>
-                  <a
-                    href="mailto:info@greenskytravels.com"
-                    className="block font-bold text-lg text-slate-900 hover:text-greensky-green transition-colors"
-                  >
-                    info@greenskytravels.com
-                  </a>
-                  <span className="text-sm text-slate-500 font-medium">
-                    Mail Us
-                  </span>
-                </div>
-              </li>
-              <li className="flex items-start gap-4">
-                {/* Whatsapp Icon Approximation using MessageCircle */}
-                <MessageCircle className="w-6 h-6 text-greensky-green flex-shrink-0 mt-1" />
-                <div>
-                  <a
-                    href="https://api.whatsapp.com/send?phone=+971585032337"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block font-bold text-lg text-slate-900 hover:text-greensky-green transition-colors"
-                  >
-                    +971 58 503 2337
-                  </a>
-                  <span className="text-sm text-slate-500 font-medium">
-                    Whatsapp/Viber
-                  </span>
-                </div>
-              </li>
-              <li className="flex items-start gap-4">
-                <Phone className="w-6 h-6 text-greensky-green flex-shrink-0 mt-1" />
-                <div>
-                  <a
-                    href="tel:+97145702868"
-                    className="block font-bold text-lg text-slate-900 hover:text-greensky-green transition-colors"
-                  >
-                    +971 4 570 2868
-                  </a>
-                  <span className="text-sm text-slate-500 font-medium">
-                    Call Us On
-                  </span>
-                </div>
-              </li>
-              <li className="pt-4 border-t border-gray-100">
-                <h3 className="font-bold text-lg text-slate-900 mb-3">
-                  Follow us on
-                </h3>
-                <div className="flex flex-wrap items-center gap-2">
-                  <a
-                    href="https://www.facebook.com/share/1BLCvezQjh/?mibextid=LQQJ4d"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-10 h-10 rounded bg-[#1877f2] hover:bg-greensky-green transition-colors text-white flex items-center justify-center"
-                  >
-                    <FaFacebook className="w-5 h-5" />
-                  </a>
-                  <a
-                    href="#"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-10 h-10 rounded bg-[#1da1f2] hover:bg-greensky-green transition-colors text-white flex items-center justify-center"
-                  >
-                    <FaTwitter className="w-5 h-5" />
-                  </a>
-                  <a
-                    href="https://www.instagram.com/greenskytravels?igsh=MXdhdWlrMXI4MTJ2cQ=="
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-10 h-10 rounded bg-[#e4405f] hover:bg-greensky-green transition-colors text-white flex items-center justify-center"
-                  >
-                    <FaInstagram className="w-5 h-5" />
-                  </a>
-                  <a
-                    href="https://www.linkedin.com/company/green-sky-travels/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-10 h-10 rounded bg-[#0a66c2] hover:bg-greensky-green transition-colors text-white flex items-center justify-center"
-                  >
-                    <FaLinkedin className="w-5 h-5" />
-                  </a>
-                  <a
-                    href="#"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-10 h-10 rounded bg-[#cd201f] hover:bg-greensky-green transition-colors text-white flex items-center justify-center"
-                  >
-                    <FaYoutube className="w-5 h-5" />
-                  </a>
-                  <a
-                    href="https://pin.it/3PBXYc0el"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-10 h-10 rounded bg-[#bd081c] hover:bg-greensky-green transition-colors text-white flex items-center justify-center"
-                  >
-                    <FaPinterest className="w-5 h-5" />
-                  </a>
-                  <a
-                    href="#"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-10 h-10 rounded bg-[#000000] hover:bg-greensky-green transition-colors text-white flex items-center justify-center"
-                  >
-                    <FaTiktok className="w-5 h-5" />
-                  </a>
-                </div>
-              </li>
-            </ul>
+    <main className="min-h-screen bg-[#f7faf8] text-[#092f42]">
+      <section className="relative border-b border-slate-200 bg-white">
+        <div className="mx-auto grid max-w-7xl items-center gap-12 px-4 py-14 sm:px-6 sm:py-16 lg:grid-cols-[1fr_0.8fr] lg:px-8 lg:py-20">
+          <div className="max-w-3xl">
+            {/* <p className="mb-5 flex items-center gap-3 text-xs font-bold uppercase tracking-[0.24em] text-[#61a447]">
+              <span className="h-px w-10 bg-[#61a447]" />
+              Green Sky Travels
+            </p> */}
+            <h1 className="max-w-2xl text-4xl font-bold leading-tight text-[#092f42] sm:text-5xl lg:text-6xl">
+              Let&apos;s plan a journey you&apos;ll remember.
+            </h1>
+            <p className="mt-6 max-w-xl text-base leading-8 text-slate-600 sm:text-lg">
+              Tell us where you want to go, and our travel specialists will take care of the details—from tours and visas to flights and custom itineraries.
+            </p>
           </div>
 
-          {/* Contact Form */}
-          <div className="lg:col-span-3">
-            <div className="bg-white rounded-xl shadow-lg border border-gray-100 p-6 md:p-8">
-              <form className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div>
-                    <input
-                      type="text"
-                      placeholder="Full Name*"
-                      required
-                      className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-greensky-green focus:border-transparent transition-shadow bg-gray-50 focus:bg-white"
-                    />
-                  </div>
-                  <div>
-                    <input
-                      type="email"
-                      placeholder="E-mail*"
-                      required
-                      className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-greensky-green focus:border-transparent transition-shadow bg-gray-50 focus:bg-white"
-                    />
-                  </div>
-                </div>
+          <div className="relative mx-auto w-full max-w-md rounded-3xl border border-slate-200 bg-[#f7faf8] p-5 shadow-sm sm:p-7" aria-label="Travel route illustration">
+            <div className="absolute -right-2 -top-2 h-16 w-16 rounded-full bg-[#eaf5e6]" aria-hidden="true" />
+            <div className="relative">
+              <div className="flex items-center justify-between">
                 <div>
-                  <input
-                    type="number"
-                    min="1"
-                    placeholder="No of Travellers*"
-                    required
-                    className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-greensky-green focus:border-transparent transition-shadow bg-gray-50 focus:bg-white"
-                  />
+                  <p className="text-xs font-bold uppercase tracking-[0.16em] text-[#61a447]">Your journey</p>
+                  <p className="mt-1 text-lg font-bold text-[#092f42]">Starts with a conversation</p>
                 </div>
-                <div>
-                  <textarea
-                    rows={6}
-                    placeholder="Message*"
-                    required
-                    className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-greensky-green focus:border-transparent transition-shadow bg-gray-50 focus:bg-white resize-y"
-                  ></textarea>
-                </div>
-                <div>
-                  {/* <button
-                    type="submit"
-                    className="bg-greensky-green hover:bg-[#519638] text-white font-bold py-3 px-8 rounded-lg transition-colors duration-200 focus:ring-4 focus:ring-green-100"
-                  >
-                    SUBMIT
-                  </button> */}
-                  <Button>Submit</Button>
-                </div>
-              </form>
+                <span className="flex h-10 w-10 items-center justify-center rounded-full bg-white text-lg shadow-sm" aria-hidden="true">✈</span>
+              </div>
+
+              <div className="relative mt-8 h-36">
+                <svg className="absolute inset-0 h-full w-full" viewBox="0 0 360 145" fill="none" aria-hidden="true">
+                  <path d="M34 108C90 18 154 22 191 73C227 122 278 125 328 43" stroke="#61a447" strokeWidth="2.5" strokeDasharray="7 8" />
+                  <path d="M34 108C90 18 154 22 191 73C227 122 278 125 328 43" stroke="#61a447" strokeOpacity=".12" strokeWidth="12" />
+                </svg>
+                <RouteStop className="absolute bottom-2 left-1" city="Dubai" country="UAE" active />
+                <RouteStop className="absolute left-[43%] top-10" city="Nepal" country="Himalayas" />
+                <RouteStop className="absolute right-0 top-0" city="Japan" country="Asia" />
+              </div>
+
+              <div className="mt-3 flex items-center justify-between border-t border-slate-200 pt-4 text-xs font-semibold text-slate-500">
+                <span>Custom tours</span>
+                <span>Visas</span>
+                <span>Flights</span>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </section>
 
-      {/* Map Section (Placed Last) */}
-      <div className="w-full h-[450px] mt-12 relative">
-        {/* Curved shape overlay from the original design */}
-        <div
-          className="absolute top-0 inset-x-0 h-4 md:h-8 bg-white"
-          style={{ clipPath: "ellipse(50% 100% at 50% 0%)" }}
-        ></div>
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3608.248679781636!2d55.288695676529045!3d25.26221867766913!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f43d74724c093%3A0x88a17c8213c7a3d9!2sGreen%20Sky%20Travels!5e0!3m2!1sen!2snp!4v1742124155703!5m2!1sen!2snp"
-          width="100%"
-          height="100%"
-          style={{ border: 0 }}
-          allowFullScreen={false}
-          loading="lazy"
-          referrerPolicy="no-referrer-when-downgrade"
-          className="w-full h-full"
-        ></iframe>
-      </div>
+      <section className="relative z-10 mx-auto -mt-8 max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="grid overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-xl shadow-slate-900/5 md:grid-cols-3">
+          <ContactCard
+            icon={<MapPin className="h-5 w-5" />}
+            eyebrow="Visit us"
+            title="Dubai office"
+            detail={siteConfig.address}
+          />
+          <ContactCard
+            icon={<Phone className="h-5 w-5" />}
+            eyebrow="Call us"
+            title={siteConfig.phone}
+            detail="Monday to Saturday · 9:00 AM – 7:00 PM"
+            href={`tel:${siteConfig.phone.replace(/\s/g, "")}`}
+          />
+          <ContactCard
+            icon={<Mail className="h-5 w-5" />}
+            eyebrow="Write to us"
+            title={siteConfig.email}
+            detail="We usually reply within one business day"
+            href={`mailto:${siteConfig.email}`}
+          />
+        </div>
+      </section>
+
+      <section className="mx-auto grid max-w-7xl gap-12 px-4 py-16 sm:px-6 lg:grid-cols-[0.8fr_1.2fr] lg:px-8 lg:py-24">
+        <div>
+          <p className="text-sm font-bold uppercase tracking-[0.18em] text-[#61a447]">Start a conversation</p>
+          <h2 className="mt-3 text-3xl font-bold tracking-tight text-[#092f42] sm:text-4xl">
+            How can we help with your next trip?
+          </h2>
+          <p className="mt-5 max-w-lg leading-7 text-slate-600">
+            Share a few details and our team will get back to you with thoughtful recommendations. No pressure, no complicated booking process—just helpful travel advice.
+          </p>
+
+          <div className="mt-9 rounded-2xl bg-[#eaf5e6] p-6 sm:p-7">
+            <div className="flex items-start gap-4">
+              <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#61a447] text-white">
+                <Clock3 className="h-5 w-5" />
+              </div>
+              <div>
+                <h3 className="font-bold text-[#092f42]">Need an instant answer?</h3>
+                <p className="mt-1 text-sm leading-6 text-slate-600">
+                  Our WhatsApp team can help with availability, visa questions, fares, and custom trips.
+                </p>
+                <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="mt-4 inline-flex items-center gap-2 text-sm font-bold text-[#4f8d39] hover:text-[#092f42]">
+                  Message the team <ArrowUpRight className="h-4 w-4" />
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-10 border-t border-slate-200 pt-7">
+            <p className="text-sm font-bold text-[#092f42]">Follow our journeys</p>
+            <div className="mt-4 flex flex-wrap gap-2">
+              {socialLinks.map(({ label, href, icon: Icon, color }) => (
+                <a
+                  key={label}
+                  href={href}
+                  target={href === "#" ? undefined : "_blank"}
+                  rel={href === "#" ? undefined : "noopener noreferrer"}
+                  aria-label={label}
+                  className={`flex h-10 w-10 items-center justify-center rounded-xl text-white transition hover:-translate-y-1 hover:shadow-lg ${color}`}
+                >
+                  <Icon className="h-4 w-4" />
+                </a>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-xl shadow-slate-900/5 sm:p-9">
+          <div className="mb-8 flex items-start justify-between gap-4 border-b border-slate-100 pb-6">
+            <div>
+              <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#61a447]">Enquiry form</p>
+              <h2 className="mt-2 text-2xl font-bold text-[#092f42]">Tell us about your plans</h2>
+            </div>
+            <div className="hidden h-11 w-11 items-center justify-center rounded-xl bg-[#eaf5e6] text-[#61a447] sm:flex">
+              <Send className="h-5 w-5" />
+            </div>
+          </div>
+          <form className="space-y-5">
+            <div className="grid gap-5 sm:grid-cols-2">
+              {enquiryFields.slice(0, 2).map((field) => (
+                <label key={field.label} className="block">
+                  <span className="text-sm font-bold text-slate-700">{field.label} <span className="text-[#61a447]">*</span></span>
+                  <input
+                    type={field.type}
+                    placeholder={field.placeholder}
+                    required
+                    className="mt-2 w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3.5 text-sm text-slate-800 outline-none transition placeholder:text-slate-400 focus:border-[#61a447] focus:bg-white focus:ring-4 focus:ring-[#61a447]/10"
+                  />
+                </label>
+              ))}
+            </div>
+            <label className="block">
+              <span className="text-sm font-bold text-slate-700">Number of travellers <span className="text-[#61a447]">*</span></span>
+              <input
+                type="number"
+                min="1"
+                placeholder="How many people are travelling?"
+                required
+                className="mt-2 w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3.5 text-sm text-slate-800 outline-none transition placeholder:text-slate-400 focus:border-[#61a447] focus:bg-white focus:ring-4 focus:ring-[#61a447]/10"
+              />
+            </label>
+            <label className="block">
+              <span className="text-sm font-bold text-slate-700">How can we help? <span className="text-[#61a447]">*</span></span>
+              <textarea
+                rows={6}
+                placeholder="Tell us your destination, dates, or what you need help with..."
+                required
+                className="mt-2 w-full resize-y rounded-xl border border-slate-200 bg-slate-50 px-4 py-3.5 text-sm text-slate-800 outline-none transition placeholder:text-slate-400 focus:border-[#61a447] focus:bg-white focus:ring-4 focus:ring-[#61a447]/10"
+              />
+            </label>
+            <button type="submit" className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#61a447] px-6 py-3.5 text-sm font-bold text-white shadow-lg shadow-[#61a447]/15 transition hover:bg-[#4f8d39] active:scale-[0.99]">
+              Send enquiry <ArrowUpRight className="h-4 w-4" />
+            </button>
+            <p className="text-center text-xs leading-5 text-slate-400">Your details are used only to respond to your enquiry.</p>
+          </form>
+        </div>
+      </section>
+
+      <section className="border-t border-slate-200 bg-white pt-4">
+        <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
+          <div className="mb-6 flex flex-col justify-between gap-3 sm:flex-row sm:items-end">
+            <div>
+              <p className="text-sm font-bold uppercase tracking-[0.18em] text-[#61a447]">Find us in Dubai</p>
+              <h2 className="mt-2 text-2xl font-bold text-[#092f42]">Come say hello</h2>
+            </div>
+            <p className="max-w-md text-sm leading-6 text-slate-500">{siteConfig.address}</p>
+          </div>
+          <div className="h-[360px] overflow-hidden rounded-2xl border border-slate-200 shadow-sm sm:h-[430px]">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3608.248679781636!2d55.288695676529045!3d25.26221867766913!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f43d74724c093%3A0x88a17c8213c7a3d9!2sGreen%20Sky%20Travels!5e0!3m2!1sen!2snp!4v1742124155703!5m2!1sen!2snp"
+              width="100%"
+              height="100%"
+              style={{ border: 0 }}
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title="Green Sky Travels Dubai office map"
+            />
+          </div>
+        </div>
+      </section>
+    </main>
+  );
+}
+
+function RouteStop({
+  city,
+  country,
+  active = false,
+  className,
+}: {
+  city: string;
+  country: string;
+  active?: boolean;
+  className?: string;
+}) {
+  return (
+    <div className={`flex items-center gap-2 ${className ?? ""}`}>
+      <span className={`flex h-7 w-7 items-center justify-center rounded-full border-4 border-white shadow-sm ${active ? "bg-[#61a447]" : "bg-[#092f42]"}`}>
+        <span className="h-1.5 w-1.5 rounded-full bg-white" />
+      </span>
+      <span className="rounded-lg bg-white px-2.5 py-1.5 shadow-sm">
+        <span className="block text-xs font-bold text-[#092f42]">{city}</span>
+        <span className="block text-[10px] font-medium text-slate-400">{country}</span>
+      </span>
     </div>
+  );
+}
+
+function ContactCard({
+  icon,
+  eyebrow,
+  title,
+  detail,
+  href,
+}: {
+  icon: React.ReactNode;
+  eyebrow: string;
+  title: string;
+  detail: string;
+  href?: string;
+}) {
+  const content = (
+    <>
+      <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#eaf5e6] text-[#61a447]">{icon}</div>
+      <div className="min-w-0">
+        <p className="text-xs font-bold uppercase tracking-[0.14em] text-slate-400">{eyebrow}</p>
+        <p className="mt-1 break-words font-bold text-[#092f42]">{title}</p>
+        <p className="mt-1 text-sm leading-6 text-slate-500">{detail}</p>
+      </div>
+    </>
+  );
+
+  return href ? (
+    <a href={href} className="flex gap-4 border-b border-slate-100 p-6 transition hover:bg-[#f7faf8] md:border-b-0 md:border-r">
+      {content}
+    </a>
+  ) : (
+    <div className="flex gap-4 border-b border-slate-100 p-6 md:border-b-0 md:border-r">{content}</div>
   );
 }

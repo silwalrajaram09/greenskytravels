@@ -3,9 +3,19 @@ import Image from "next/image";
 import { Search, MapPin, Calendar, Users } from "lucide-react";
 import DestinationCard from "@/components/ui/destination-card";
 import PackageCard from "@/components/ui/package-card";
-import { featuredPackages, popularDestinations } from "@/lib/data/packageData";
+import {
+  featuredPackages,
+  popularDestinations,
+  slugify,
+} from "@/lib/content/catalog";
 import HeroSection from "@/components/ui/herosection";
-export default function Home() {
+import HomeServiceCards from "@/components/services/HomeServiceCards";
+import HomeGateway from "@/components/home/HomeGateway";
+import HomeReviews from "@/components/home/HomeReviews";
+import { getHomepageReviews } from "@/lib/content/review";
+export default async function Home() {
+  const homepageReviews = await getHomepageReviews();
+
   return (
     <div className="flex flex-col min-h-screen">
       {/* Hero Section */}
@@ -66,36 +76,76 @@ export default function Home() {
       </section> */}
 
       {/* Featured Destinations */}
-      <section className="py-24 bg-white">
+      <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
+          <div className="text-center mb-10">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
               Popular Destinations
             </h2>
+
             <p className="text-gray-500 max-w-2xl mx-auto">
               From the highest peaks of Nepal to the ultra-modern skyline of
               Dubai, explore our most sought-after locations.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {popularDestinations.map((dest) => (
-              <DestinationCard
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 items-start">
+            {popularDestinations.map((dest, index) => (
+              <div
                 key={dest.slug}
-                title={dest.name}
-                image={dest.image}
-                toursCount={dest.toursCount}
-              />
+                className={index % 2 === 1 ? "translate-y-11" : ""}
+              >
+                <DestinationCard
+                  title={dest.name}
+                  slug={dest.slug}
+                  image={dest.image}
+                  toursCount={dest.toursCount}
+                />
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Featured Packages */}
-      <section className="py-24 bg-gray-50">
+      {/* Dubai Gateway Section */}
+      <HomeGateway />
+      {/* Services Section */}
+      <section className="py-24 bg-slate-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-4">
             <div>
+              <span className=" mb-4 block h-[1px] w-15 bg-[#c91c3c]" />
+
+              <h2 className=" text-3xl md:text-4xl font-bold text-gray-900 mb-4 ">
+                Our Services
+              </h2>
+              <p className="text-gray-500 max-w-2xl">
+                From booking flights to arranging visas, we handle all your
+                travel needs to ensure a smooth and hassle-free journey.
+              </p>
+            </div>
+            <Link
+              href="/services"
+              className="text-primary font-semibold hover:text-green-700 flex items-center gap-1 group"
+            >
+              View All Services{" "}
+              <span className="transform transition-transform group-hover:translate-x-1">
+                →
+              </span>
+            </Link>
+          </div>
+
+          <HomeServiceCards />
+        </div>
+      </section>
+
+      {/* Featured Packages */}
+      <section className="py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-4">
+            <div>
+              <span className=" mb-4 block h-[1px] w-15 bg-[#c91c3c]" />
+
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
                 Trending Packages
               </h2>
@@ -105,7 +155,7 @@ export default function Home() {
               </p>
             </div>
             <Link
-              href="/packages"
+              href="/destinations"
               className="text-primary font-semibold hover:text-green-700 flex items-center gap-1 group"
             >
               View All Packages{" "}
@@ -123,15 +173,17 @@ export default function Home() {
                 image={pkg.image}
                 duration={pkg.duration}
                 groupSize="Flexible"
-                price={pkg.price}
+                price={pkg.price ?? ""}
                 rating={pkg.rating}
-                href={`/packages/${pkg.slug}`}
+                href={`/destinations/${slugify(pkg.destination)}/${pkg.slug}`}
               />
             ))}
           </div>
         </div>
       </section>
 
+      {/* Reviews Section */}
+      <HomeReviews reviews={homepageReviews} />
       {/* CTA Section */}
       <section className="py-24 bg-secondary relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">

@@ -1,0 +1,93 @@
+{
+  "slug": "best-georgia-holidays-7-days",
+  "title": "Best Georgia Holidays - 7 days",
+  "destination": "Georgia",
+  "duration": "7 days",
+  "activities": "Custom and Private Tours",
+  "tripType": "Private Trip",
+  "accommodation": "Hotels",
+  "groupSize": "Min. 2 Pax",
+  "vehicle": "Private Car/Van",
+  "meals": "Breakfast",
+  "heroImage": "/images/destinations/georgia-tour-packages.avif",
+  "gallery": [],
+  "highlights": [
+    "Discover Tbilisi’s vibrant Old Town with a guided evening city tour.",
+    "Visit Mtskheta and enjoy a sweet and wine-tasting session.",
+    "Explore Martvili and Okatse Canyons and Prometheus Cave in Kutaisi.",
+    "Walk across Dashbashi Canyon’s iconic Diamond Bridge.",
+    "Enjoy Kazbegi and Gudauri, including Gergeti Trinity Church and Friendship Arch.",
+    "Spend a relaxing free day in Kazbegi or Gudauri."
+  ],
+  "overview": "Green Sky Travel invites you to experience the best of Georgia in a seven-day adventure. From historic Tbilisi and Mtskheta to Kutaisi’s breathtaking canyons and the serene mountains of Kazbegi and Gudauri, this tour is a gateway to Georgia’s culture, nature and history. Explore vibrant streets, taste wine in Mtskheta, discover magical canyons, cross Dashbashi Canyon’s Diamond Bridge and enjoy spectacular mountain views.",
+  "sections": [
+    {
+      "title": "Seven Days of History, Culture and Natural Beauty",
+      "paragraphs": [
+        "Arrive in Tbilisi, explore Mtskheta and enjoy wine tasting, then discover Kutaisi’s canyons and caves, Dashbashi Canyon, Kazbegi and Gudauri.",
+        "Relax in the mountains before a private transfer from Kazbegi or Gudauri to Tbilisi or the airport."
+      ]
+    }
+  ],
+  "distanceAndAltitude": [],
+  "itinerary": [
+    {
+      "day": 1,
+      "title": "Transfer from Tbilisi Airport to Hotel",
+      "description": [
+        "Our team will greet you near the information center with green scarves.",
+        "Enjoy a comfortable door-to-door transfer to your Tbilisi hotel.",
+        "Begin your Georgian adventure with a smooth arrival."
+      ],
+      "duration": "30 Minutes"
+    },
+    {
+      "day": 2,
+      "title": "Mtskheta Old Capital of Georgia – Sweet and Wine Tasting",
+      "description": "Explore Mtskheta, Georgia’s ancient capital and spiritual center. Enjoy sweet and wine tasting followed by a guided evening city tour of Tbilisi."
+    },
+    {
+      "day": 3,
+      "title": "Kutaisi Canyons and Caves from Tbilisi Full-Day Tour",
+      "description": "Take a full-day excursion to Kutaisi and discover Martvili Canyon, Okatse Canyon and Prometheus Cave."
+    },
+    {
+      "day": 4,
+      "title": "Diamond Bridge and Dashbashi Canyon",
+      "description": "Visit Dashbashi Canyon and cross the Diamond Bridge while enjoying spectacular Georgian landscapes."
+    },
+    {
+      "day": 5,
+      "title": "Kazbegi and Gudauri Full-Day Tour",
+      "description": "Travel through Kazbegi and Gudauri, visit Gergeti Trinity Church and see the Friendship Arch."
+    },
+    {
+      "day": 6,
+      "title": "Free Day in Kazbegi or Gudauri",
+      "description": "Relax, explore independently or unwind amid the mountain scenery of Kazbegi or Gudauri."
+    },
+    {
+      "day": 7,
+      "title": "Private Transfer from Gudauri or Kazbegi to Tbilisi or Tbilisi Airport",
+      "description": "Travel by private transfer to Tbilisi or directly to the airport, depending on your onward travel plans."
+    }
+  ],
+  "included": [],
+  "excluded": [],
+  "prices": [
+    { "label": "1 - 2 Person", "price": 2500 },
+    { "label": "3 - 6 Person", "price": 2400 },
+    { "label": "7 - 12 Person", "price": 2300 },
+    { "label": "13 - 20 Person", "price": 2000 }
+  ],
+  "goodToKnow": [
+    "Expert guides and drivers provide support throughout the journey.",
+    "Georgia’s climate varies, so pack layers for mountain regions.",
+    "The official currency is Georgian Lari (GEL); carry cash for remote areas.",
+    "A local SIM card is recommended for rural areas.",
+    "Comfortable shoes are essential for canyon visits."
+  ],
+  "featured": false,
+  "category": "Georgia Tours",
+  "reviews": []
+}

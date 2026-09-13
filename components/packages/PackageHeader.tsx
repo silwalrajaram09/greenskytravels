@@ -1,7 +1,9 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
+import { destinationSlug } from "@/lib/content/catalog";
 import {
   ChevronLeft,
   ChevronRight,
@@ -65,6 +67,15 @@ export function PackageHeader({ pkg }: PackageHeaderProps) {
     <>
       <div>
         <div className="mx-auto max-w-7xl px-4 py-3 sm:px-6 lg:px-8">
+          <nav className="flex items-center gap-2 text-sm text-slate-500 mb-6 mt-4">
+            <Link href="/" className="hover:text-primary transition-colors">Home</Link>
+            <ChevronRight className="h-4 w-4" aria-hidden="true" />
+            <Link href="/destinations" className="hover:text-primary transition-colors">Destinations</Link>
+            <ChevronRight className="h-4 w-4" aria-hidden="true" />
+            <Link href={`/destinations/${destinationSlug(pkg.destination)}`} className="hover:text-primary transition-colors">{pkg.destination}</Link>
+            <ChevronRight className="h-4 w-4" aria-hidden="true" />
+            <span className="font-semibold text-slate-900">{pkg.title}</span>
+          </nav>
           <div className="flex items-center justify-between gap-4">
             <h1 className="text-3xl font-bold text-[#020617]">{pkg.title}</h1>
 

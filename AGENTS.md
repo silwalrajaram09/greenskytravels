@@ -1,9 +1,1 @@
-<!-- BEGIN:nextjs-agent-rules -->
-
-# This is NOT the Next.js you know
-
-This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` (resolved from this file's directory; in monorepos the `next` package may not be visible from the repo root) before writing any code. Heed deprecation notices.
-
-This block is written and re-added by `next dev` — verify at `node_modules/next/dist/server/lib/generate-agent-files.js`. Removing it from a diff only re-creates the uncommitted change; committing it with your work keeps the tree clean.
-
-<!-- END:nextjs-agent-rules -->
+right now this flow is destination and package separately so it display like i click the destination nepal it shows the various package related to nepal and click one package then goes to package and breadcrumbs also generate the destination nepal and after click the package it goes and display the package and click package but by goal is shows the destionation->nepal>and its package like short tour or whatever it click no need the package separate route and directory 

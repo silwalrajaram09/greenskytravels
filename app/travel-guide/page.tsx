@@ -3,7 +3,7 @@ import Link from "next/link";
 import { SlidersHorizontal, User, Globe } from "lucide-react";
 import Breadcrumbs from "@/components/ui/Breadcrumbs";
 
-import blogData from "@/lib/data/travel-guide/blog.json";
+import blogData from "@/lib/content/travel-guide/blog.json";
 
 export default function TravelGuidePage() {
   return (
@@ -109,7 +109,7 @@ export default function TravelGuidePage() {
           </div>
         </div>
 
-        <div className="grid lg:grid-cols-3 sm:grid-cols-2 gap-6">
+        {/* <div className="grid lg:grid-cols-3 sm:grid-cols-2 gap-6">
           {blogData.blog.map((post: any, index: number) => {
             const dateParts = post.date ? post.date.split(" ") : ["01", "Jan"];
             const day = dateParts[0];
@@ -180,7 +180,7 @@ export default function TravelGuidePage() {
               </div>
             );
           })}
-        </div>
+        </div> */}
 
         <div className="mt-12 flex justify-center">
           <button

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Breadcrumbs from "@/components/ui/Breadcrumbs";
+import { getWhatsAppUrl } from "@/lib/config/site";
 
 const DESTINATIONS = [
   "Nepal", "Dubai / UAE", "Bhutan", "India", "Azerbaijan", "Georgia",
@@ -109,8 +110,7 @@ export default function CustomizeYourTripPage() {
 
     message += `\nPlease help me create the best itinerary.`;
 
-    const encodedMessage = encodeURIComponent(message);
-    window.open(`https://wa.me/971585032337?text=${encodedMessage}`, "_blank");
+    window.open(getWhatsAppUrl(message, "services"), "_blank");
   };
 
   return (

@@ -3,10 +3,18 @@ export interface PackagePrice {
   price: number;
 }
 
+export interface ItineraryHighlight {
+  title: string;
+  description?: string;
+}
+
 export interface ItineraryDay {
   day: number;
   title: string;
   description: string | string[];
+  duration?: string;
+  highlights?: (string | ItineraryHighlight)[];
+  ending?: string;
 }
 
 export interface RouteSegment {
@@ -36,6 +44,7 @@ export interface TravelPackage {
   destination: string;
   duration: string;
   activities: string;
+  tripType: string;
   accommodation: string;
   maxElevation?: string;
   groupSize: string;
